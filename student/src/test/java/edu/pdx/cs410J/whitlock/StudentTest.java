@@ -1,6 +1,7 @@
 package edu.pdx.cs410J.whitlock;
 
 import edu.pdx.cs410J.InvokeMainTestCase;
+import org.junit.Ignore;
 import org.junit.Test;
 
 import java.util.ArrayList;
@@ -22,6 +23,18 @@ public class StudentTest extends InvokeMainTestCase
   public void allStudentsSayThisClassIsTooMuchWork() {
     Student student = new Student("name", new ArrayList(), 1.23, "male");
     assertThat(student.says(), equalTo("This class is too much work"));
+  }
+
+  @Ignore
+  @Test
+  public void studentToStringOfDavemale3_64AlgorithmsOperatingSystemsJava() {
+    ArrayList classes = new ArrayList();
+    classes.add("Algorithms");
+    classes.add("Operating Systems");
+    classes.add("Java");
+    Student dave = new Student("Dave", classes, 3.64, "male");
+
+    assertThat(dave.toString(), equalTo("Dave has a GPA of 3.64 and is taking 3 classes: Algorithms, Operating Systems, and Java. He says \"This class is too much work\"."));
   }
 
   @Test
