@@ -3,6 +3,8 @@ package edu.pdx.cs410J.whitlock;
 import edu.pdx.cs410J.InvokeMainTestCase;
 import org.junit.Test;
 
+import java.util.ArrayList;
+
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.core.IsEqual.equalTo;
 import static org.hamcrest.core.StringContains.containsString;
@@ -15,6 +17,12 @@ import static org.hamcrest.core.StringContains.containsString;
  */
 public class StudentTest extends InvokeMainTestCase
 {
+
+  @Test
+  public void allStudentsSayThisClassIsTooMuchWork() {
+    Student student = new Student("name", new ArrayList(), 1.23, "male");
+    assertThat(student.says(), equalTo("This class is too much work"));
+  }
 
   @Test
   public void invokingMainWithNoArgumentsHasExitCodeOf1() {
