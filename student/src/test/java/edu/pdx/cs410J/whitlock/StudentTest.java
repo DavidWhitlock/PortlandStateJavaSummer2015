@@ -6,6 +6,7 @@ import org.junit.Test;
 
 import java.util.ArrayList;
 
+import static org.hamcrest.CoreMatchers.startsWith;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.core.IsEqual.equalTo;
 import static org.hamcrest.core.StringContains.containsString;
@@ -28,21 +29,34 @@ public class StudentTest extends InvokeMainTestCase
   @Ignore
   @Test
   public void studentToStringOfDavemale3_64AlgorithmsOperatingSystemsJava() {
-    ArrayList classes = new ArrayList();
-    classes.add("Algorithms");
-    classes.add("Operating Systems");
-    classes.add("Java");
-    Student dave = new Student("Dave", classes, 3.64, "male");
+    Student dave = createDaveStudent();
 
     assertThat(dave.toString(), equalTo("Dave has a GPA of 3.64 and is taking 3 classes: Algorithms, Operating Systems, and Java. He says \"This class is too much work\"."));
   }
 
+  @Test
+  public void studentNamedDaveHasNameOfDave() {
+    Student dave = createDaveStudent();
+
+    assertThat(dave.toString(), startsWith("Dave"));
+  }
+
+  private Student createDaveStudent() {
+    ArrayList classes = new ArrayList();
+    classes.add("Algorithms");
+    classes.add("Operating Systems");
+    classes.add("Java");
+    return new Student("Dave", classes, 3.64, "male");
+  }
+
+  @Ignore
   @Test
   public void invokingMainWithNoArgumentsHasExitCodeOf1() {
     MainMethodResult result = invokeMain(Student.class);
     assertThat(result.getExitCode(), equalTo(1));
   }
 
+  @Ignore
   @Test
   public void invokingMainWithNoArgumentsPrintsMissingArgumentsToStandardError() {
     MainMethodResult result = invokeMain(Student.class);
