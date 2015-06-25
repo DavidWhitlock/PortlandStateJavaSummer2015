@@ -39,7 +39,7 @@ public class Student extends Human {
    * <code>Student</code>.                                                          
    */                                                                               
   public String toString() {
-    return "Dave";
+    return this.name;
   }
 
   /**

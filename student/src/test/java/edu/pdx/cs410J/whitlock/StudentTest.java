@@ -29,24 +29,31 @@ public class StudentTest extends InvokeMainTestCase
   @Ignore
   @Test
   public void studentToStringOfDavemale3_64AlgorithmsOperatingSystemsJava() {
-    Student dave = createDaveStudent();
+    Student dave = createStudent("Dave");
 
     assertThat(dave.toString(), equalTo("Dave has a GPA of 3.64 and is taking 3 classes: Algorithms, Operating Systems, and Java. He says \"This class is too much work\"."));
   }
 
   @Test
   public void studentNamedDaveHasNameOfDave() {
-    Student dave = createDaveStudent();
+    Student dave = createStudent("Dave");
 
     assertThat(dave.toString(), startsWith("Dave"));
   }
 
-  private Student createDaveStudent() {
+  @Test
+  public void studentNamedFrankHasNameOfFrank() {
+    Student frank = createStudent("Frank");
+
+    assertThat(frank.toString(), startsWith("Frank"));
+  }
+
+  private Student createStudent(String name) {
     ArrayList classes = new ArrayList();
     classes.add("Algorithms");
     classes.add("Operating Systems");
     classes.add("Java");
-    return new Student("Dave", classes, 3.64, "male");
+    return new Student(name, classes, 3.64, "male");
   }
 
   @Ignore
