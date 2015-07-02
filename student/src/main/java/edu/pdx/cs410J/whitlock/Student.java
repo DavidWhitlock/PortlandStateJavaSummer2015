@@ -5,7 +5,7 @@ import edu.pdx.cs410J.lang.Human;
 import java.text.DecimalFormat;
 import java.text.NumberFormat;
 import java.util.ArrayList;
-                                                                                    
+
 /**                                                                                 
  * This class is represents a <code>Student</code>.                                 
  */                                                                                 
@@ -62,6 +62,7 @@ public class Student extends Human {
   public static void main(String[] args) {
     String name = null;
     String gender = null;
+    String gpaString = null;
 
     for (String arg : args) {
       if (name == null) {
@@ -69,6 +70,9 @@ public class Student extends Human {
 
       } else if (gender == null) {
         gender = arg;
+
+      } else if (gpaString == null) {
+        gpaString = arg;
       }
     }
 
@@ -77,6 +81,17 @@ public class Student extends Human {
 
     } else if (gender == null) {
       printErrorMessageAndExit("Missing gender");
+
+    } else if (gpaString == null) {
+      printErrorMessageAndExit("Missing GPA");
+    }
+
+    double gpa;
+    try {
+      gpa = Double.parseDouble(gpaString);
+
+    } catch (NumberFormatException ex) {
+      printErrorMessageAndExit("Invalid GPA: " + gpaString);
     }
   }
 

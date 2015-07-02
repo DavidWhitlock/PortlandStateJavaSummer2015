@@ -133,13 +133,14 @@ public class StudentTest extends InvokeMainTestCase
   public void invokingMainWithOnlyOneArgumentPrintsMissingGenderToStandardError() {
     MainMethodResult result = invokeMain(Student.class, "Dave");
     assertThat(result.getErr(), containsString("Missing gender"));
+    assertThat(result.getExitCode(), equalTo(1));
   }
 
-  @Ignore
   @Test
-  public void unparsableGPAResultsInErrorMessage()
-  {
-
+  public void unparsableGPAResultsInErrorMessage() {
+    MainMethodResult result = invokeMain(Student.class, "Dave", "male", "BADGPA");
+    assertThat(result.getErr(), containsString("Invalid GPA: BADGPA"));
+    assertThat(result.getExitCode(), equalTo(1));
   }
 
 }
