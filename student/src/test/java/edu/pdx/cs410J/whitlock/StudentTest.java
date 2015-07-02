@@ -1,7 +1,6 @@
 package edu.pdx.cs410J.whitlock;
 
 import edu.pdx.cs410J.InvokeMainTestCase;
-import org.hamcrest.CoreMatchers;
 import org.junit.Ignore;
 import org.junit.Test;
 
@@ -54,7 +53,15 @@ public class StudentTest extends InvokeMainTestCase
     double gpa = 3.14;
     Student aStudent = createStudent("student", gpa);
 
-    assertThat(aStudent.toString(), CoreMatchers.containsString(" has a GPA of " + String.valueOf(gpa)));
+    assertThat(aStudent.toString(), containsString(" has a GPA of " + String.valueOf(gpa)));
+  }
+
+  @Test
+  public void wholeNumberGPAPrintsWithTwoDecimalPlace() {
+    double gpa = 4;
+    Student aStudent = createStudent("student", gpa);
+
+    assertThat(aStudent.toString(), containsString(" has a GPA of 4.0"));
   }
 
   @Test
