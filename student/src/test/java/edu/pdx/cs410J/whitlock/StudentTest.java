@@ -116,7 +116,7 @@ public class StudentTest extends InvokeMainTestCase
     assertThat(aStudent.toString(), containsString(" and is taking 3 classes:"));
 
   }
-  @Ignore
+
   @Test
   public void invokingMainWithNoArgumentsHasExitCodeOf1() {
     MainMethodResult result = invokeMain(Student.class);

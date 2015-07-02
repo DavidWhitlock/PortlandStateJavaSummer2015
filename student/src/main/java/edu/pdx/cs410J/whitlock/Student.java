@@ -61,5 +61,6 @@ public class Student extends Human {
    */
   public static void main(String[] args) {
     System.out.print("Hello Student");
+    System.exit(1);
   }
 }
