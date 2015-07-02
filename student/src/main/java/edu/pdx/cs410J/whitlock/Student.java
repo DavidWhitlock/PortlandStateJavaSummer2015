@@ -42,7 +42,7 @@ public class Student extends Human {
    * <code>Student</code>.                                                          
    */                                                                               
   public String toString() {
-    return this.name + " " + this.gpa;
+    return this.name + " has a GPA of " + this.gpa;
   }
 
   /**

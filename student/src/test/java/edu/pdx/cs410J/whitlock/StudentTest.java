@@ -54,7 +54,13 @@ public class StudentTest extends InvokeMainTestCase
     double gpa = 3.14;
     Student aStudent = createStudent("student", gpa);
 
-    assertThat(aStudent.toString(), CoreMatchers.containsString(String.valueOf(gpa)));
+    assertThat(aStudent.toString(), CoreMatchers.containsString(" has a GPA of " + String.valueOf(gpa)));
+  }
+
+  @Test
+  @Ignore
+  public void gpaWithMoreThanTwoDigitsOfPrecisionOnlyPrintsTwoDecimalDigits() {
+
   }
 
   /**
