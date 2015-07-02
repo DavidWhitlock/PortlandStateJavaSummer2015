@@ -90,13 +90,32 @@ public class StudentTest extends InvokeMainTestCase
    * @return The new student
    */
   private Student createStudent(String name, double gpa) {
+    return createStudent(name, gpa, 3);
+  }
+
+  /**
+   * Creates a new <code>Student</code> with the given name.
+   * @param name The name of the student
+   * @param gpa
+   * @param numClasses
+   * @return The new student
+   */
+  private Student createStudent(String name, double gpa, int numClasses) {
     ArrayList classes = new ArrayList();
-    classes.add("Algorithms");
-    classes.add("Operating Systems");
-    classes.add("Java");
+
+    for (int i = 0; i < numClasses; i++) {
+      classes.add("Class " + i);
+    }
+
     return new Student(name, classes, gpa, "male");
   }
 
+  @Test
+  public void studentWhoTakesThreeClassesSpecifiesTheyTake3Classes(){
+    Student aStudent = createStudent("student", 3.14, 3);
+    assertThat(aStudent.toString(), containsString(" and is taking 3 classes:"));
+
+  }
   @Ignore
   @Test
   public void invokingMainWithNoArgumentsHasExitCodeOf1() {
