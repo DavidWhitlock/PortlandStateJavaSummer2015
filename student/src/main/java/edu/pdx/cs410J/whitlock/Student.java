@@ -61,6 +61,8 @@ public class Student extends Human {
    */
   public static void main(String[] args) {
     System.out.print("Hello Student");
+
+    System.err.println("Missing command line arguments");
     System.exit(1);
   }
 }

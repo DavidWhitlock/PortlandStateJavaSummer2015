@@ -123,7 +123,6 @@ public class StudentTest extends InvokeMainTestCase
     assertThat(result.getExitCode(), equalTo(1));
   }
 
-  @Ignore
   @Test
   public void invokingMainWithNoArgumentsPrintsMissingArgumentsToStandardError() {
     MainMethodResult result = invokeMain(Student.class);
