@@ -2,6 +2,8 @@ package edu.pdx.cs410J.whitlock;
 
 import edu.pdx.cs410J.lang.Human;
 
+import java.text.DecimalFormat;
+import java.text.NumberFormat;
 import java.util.ArrayList;
                                                                                     
 /**                                                                                 
@@ -42,7 +44,12 @@ public class Student extends Human {
    * <code>Student</code>.                                                          
    */                                                                               
   public String toString() {
-    return this.name + " has a GPA of " + this.gpa;
+    return this.name + " has a GPA of " + formatGpa();
+  }
+
+  private String formatGpa() {
+    NumberFormat format = new DecimalFormat("#.0#");
+    return format.format(this.gpa);
   }
 
   /**

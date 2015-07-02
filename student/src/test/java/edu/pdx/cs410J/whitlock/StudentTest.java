@@ -51,23 +51,27 @@ public class StudentTest extends InvokeMainTestCase
   @Test
   public void studentWithGPAof314(){
     double gpa = 3.14;
-    Student aStudent = createStudent("student", gpa);
+    String expectedGpaStringValue = String.valueOf(gpa);
 
-    assertThat(aStudent.toString(), containsString(" has a GPA of " + String.valueOf(gpa)));
+    assertGpaIsAsExpected(gpa, expectedGpaStringValue);
+  }
+
+  private void assertGpaIsAsExpected(double gpa, String expectedGpaStringValue) {
+    Student aStudent = createStudent("student", gpa);
+    assertThat(aStudent.toString(), containsString(" has a GPA of " + expectedGpaStringValue));
   }
 
   @Test
   public void wholeNumberGPAPrintsWithTwoDecimalPlace() {
     double gpa = 4;
-    Student aStudent = createStudent("student", gpa);
+    String expectedGpaStringValue = "4.0";
 
-    assertThat(aStudent.toString(), containsString(" has a GPA of 4.0"));
+    assertGpaIsAsExpected(gpa, expectedGpaStringValue);
   }
 
   @Test
-  @Ignore
-  public void gpaWithMoreThanTwoDigitsOfPrecisionOnlyPrintsTwoDecimalDigits() {
-
+  public void gpaOf3point999DisplaysAs4point00() {
+    assertGpaIsAsExpected(3.999, "4.0");
   }
 
   /**
@@ -105,6 +109,13 @@ public class StudentTest extends InvokeMainTestCase
   public void invokingMainWithNoArgumentsPrintsMissingArgumentsToStandardError() {
     MainMethodResult result = invokeMain(Student.class);
     assertThat(result.getErr(), containsString("Missing command line arguments"));
+  }
+
+  @Ignore
+  @Test
+  public void unparsableGPAResultsInErrorMessage()
+  {
+
   }
 
 }
