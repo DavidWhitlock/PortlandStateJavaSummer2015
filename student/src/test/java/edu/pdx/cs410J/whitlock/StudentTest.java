@@ -1,6 +1,7 @@
 package edu.pdx.cs410J.whitlock;
 
 import edu.pdx.cs410J.InvokeMainTestCase;
+import org.hamcrest.CoreMatchers;
 import org.junit.Ignore;
 import org.junit.Test;
 
@@ -48,12 +49,35 @@ public class StudentTest extends InvokeMainTestCase
     assertThat(frank.toString(), startsWith("Frank"));
   }
 
+  @Test
+  public void studentWithGPAof314(){
+    double gpa = 3.14;
+    Student aStudent = createStudent("student", gpa);
+
+    assertThat(aStudent.toString(), CoreMatchers.containsString(String.valueOf(gpa)));
+  }
+
+  /**
+   * Creates a new <code>Student</code> with the given name.
+   * @param name The name of the student
+   * @return The new student
+   */
   private Student createStudent(String name) {
+    return createStudent(name, 3.64);
+  }
+
+  /**
+   * Creates a new <code>Student</code> with the given name.
+   * @param name The name of the student
+   * @param gpa
+   * @return The new student
+   */
+  private Student createStudent(String name, double gpa) {
     ArrayList classes = new ArrayList();
     classes.add("Algorithms");
     classes.add("Operating Systems");
     classes.add("Java");
-    return new Student(name, classes, 3.64, "male");
+    return new Student(name, classes, gpa, "male");
   }
 
   @Ignore
