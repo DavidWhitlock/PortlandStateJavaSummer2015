@@ -129,6 +129,12 @@ public class StudentTest extends InvokeMainTestCase
     assertThat(result.getErr(), containsString("Missing command line arguments"));
   }
 
+  @Test
+  public void invokingMainWithOnlyOneArgumentPrintsMissingGenderToStandardError() {
+    MainMethodResult result = invokeMain(Student.class, "Dave");
+    assertThat(result.getErr(), containsString("Missing gender"));
+  }
+
   @Ignore
   @Test
   public void unparsableGPAResultsInErrorMessage()

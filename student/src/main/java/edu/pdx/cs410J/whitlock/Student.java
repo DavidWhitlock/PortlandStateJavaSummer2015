@@ -60,9 +60,28 @@ public class Student extends Human {
    * standard out by invoking its <code>toString</code> method.
    */
   public static void main(String[] args) {
-    System.out.print("Hello Student");
+    String name = null;
+    String gender = null;
 
-    System.err.println("Missing command line arguments");
+    for (String arg : args) {
+      if (name == null) {
+        name = arg;
+
+      } else if (gender == null) {
+        gender = arg;
+      }
+    }
+
+    if (name == null) {
+      printErrorMessageAndExit("Missing command line arguments");
+
+    } else if (gender == null) {
+      printErrorMessageAndExit("Missing gender");
+    }
+  }
+
+  private static void printErrorMessageAndExit(String message) {
+    System.err.println(message);
     System.exit(1);
   }
 }
