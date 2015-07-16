@@ -49,18 +49,20 @@ public class NumbersInWordsTest extends InvokeMainTestCase {
     String num = "0.00";
     NumbersInWords niw = new NumbersInWords();
     assertTrue(niw.parse(num));
-
-
   }
-
 
   @Test
   public void testInvalidMinValue(){
     String num = "-1";
     NumbersInWords niw = new NumbersInWords();
     assertFalse(niw.parse(num));
+  }
 
-
+  @Test
+  public void testConvert1ToOne(){
+    int d = 1;
+    NumbersInWords niw = new NumbersInWords();
+    assertEquals("One", niw.convert(d));
   }
 
 
