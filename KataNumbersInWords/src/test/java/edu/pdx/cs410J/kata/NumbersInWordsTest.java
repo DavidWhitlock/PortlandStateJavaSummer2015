@@ -35,5 +35,34 @@ public class NumbersInWordsTest extends InvokeMainTestCase {
     assertFalse(niw.parse(input));
    }
 
+  @Test
+  public  void testValidDouble(){
+    String num = "44.44";
+    NumbersInWords niw = new NumbersInWords();
+    assertTrue(niw.parse(num));
+
+
+  }
+
+  @Test
+  public void testMinValue(){
+    String num = "0.00";
+    NumbersInWords niw = new NumbersInWords();
+    assertTrue(niw.parse(num));
+
+
+  }
+
+
+  @Test
+  public void testInvalidMinValue(){
+    String num = "-1";
+    NumbersInWords niw = new NumbersInWords();
+    assertFalse(niw.parse(num));
+
+
+  }
+
+
 
 }

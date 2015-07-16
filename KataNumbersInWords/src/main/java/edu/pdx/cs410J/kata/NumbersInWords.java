@@ -11,7 +11,10 @@ public class NumbersInWords {
   {
     try
     {
-    Double.parseDouble(input);
+    double result = Double.parseDouble(input);
+      if(result<0){
+        return false;
+      }
     }
     catch (Exception e)
     {
