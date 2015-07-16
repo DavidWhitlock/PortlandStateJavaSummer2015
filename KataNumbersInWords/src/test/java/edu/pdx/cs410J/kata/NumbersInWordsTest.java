@@ -1,20 +1,21 @@
 package edu.pdx.cs410J.kata;
 
-import org.junit.Test;
-import static org.junit.Assert.assertTrue;
 import edu.pdx.cs410J.InvokeMainTestCase;
+import org.junit.Test;
+
 import static junit.framework.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 /**
- * Tests the functionality in the {@link Project1} main class.
+ * Tests the functionality in the {@link NumbersInWords} main class.
  */
-public class Project1Test extends InvokeMainTestCase {
+public class NumbersInWordsTest extends InvokeMainTestCase {
 
     /**
-     * Invokes the main method of {@link Project1} with the given arguments.
+     * Invokes the main method of {@link NumbersInWords} with the given arguments.
      */
     private MainMethodResult invokeMain(String... args) {
-        return invokeMain( Project1.class, args );
+        return invokeMain( NumbersInWords.class, args );
     }
 
   /**
