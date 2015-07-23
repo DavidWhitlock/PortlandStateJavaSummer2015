@@ -1,20 +1,21 @@
 package edu.pdx.cs410J.minesweeper;
 
-import org.junit.Test;
-import static org.junit.Assert.assertTrue;
 import edu.pdx.cs410J.InvokeMainTestCase;
+import org.junit.Test;
+
 import static junit.framework.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 /**
- * Tests the functionality in the {@link Project1} main class.
+ * Tests the functionality in the {@link Minesweeper} main class.
  */
 public class Project1Test extends InvokeMainTestCase {
 
     /**
-     * Invokes the main method of {@link Project1} with the given arguments.
+     * Invokes the main method of {@link Minesweeper} with the given arguments.
      */
     private MainMethodResult invokeMain(String... args) {
-        return invokeMain( Project1.class, args );
+        return invokeMain( Minesweeper.class, args );
     }
 
   /**

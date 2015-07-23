@@ -5,7 +5,7 @@ import edu.pdx.cs410J.AbstractPhoneBill;
 /**
  * The main class for the CS410J Phone Bill Project
  */
-public class Project1 {
+public class Minesweeper {
 
   public static void main(String[] args) {
     Class c = AbstractPhoneBill.class;  // Refer to one of Dave's classes so that we can be sure it is on the classpath

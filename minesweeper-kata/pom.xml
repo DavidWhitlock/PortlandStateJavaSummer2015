@@ -72,7 +72,7 @@
         <configuration>
           <archive>
             <manifest>
-              <mainClass>edu.pdx.cs410J.minesweeper.Project1</mainClass>
+              <mainClass>edu.pdx.cs410J.minesweeper.Minesweeper</mainClass>
             </manifest>
           </archive>
         </configuration>
