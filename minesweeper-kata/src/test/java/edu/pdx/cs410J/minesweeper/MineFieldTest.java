@@ -1,6 +1,7 @@
 package edu.pdx.cs410J.minesweeper;
 
 import edu.pdx.cs410J.InvokeMainTestCase;
+import org.junit.Ignore;
 import org.junit.Test;
 
 /**
@@ -27,4 +28,18 @@ public class MineFieldTest extends InvokeMainTestCase {
     new MineField(0, 0);
   }
 
+  @Test(expected = IllegalArgumentException.class)
+  public void zeroByNonZeroThrowsIllegalArgumentExcepion(){
+
+    new MineField(0, 1);
+
+  }
+
+  @Ignore
+  @Test(expected = IllegalArgumentException.class)
+  public void nonZeroByZeroThrowsIllegalArgumentExcepion(){
+
+
+
+  }
 }
