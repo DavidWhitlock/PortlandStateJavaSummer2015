@@ -4,6 +4,9 @@ import edu.pdx.cs410J.InvokeMainTestCase;
 import org.junit.Ignore;
 import org.junit.Test;
 
+import static org.hamcrest.CoreMatchers.equalTo;
+import static org.hamcrest.MatcherAssert.assertThat;
+
 /**
  * Tests the functionality in the {@link MineField} main class.
  */
@@ -41,5 +44,14 @@ public class MineFieldTest extends InvokeMainTestCase {
 
 
 
+  }
+
+  @Test
+  public void oneByOneMineFieldWithOneMineHasOneMine() {
+    MineField field = new MineField(1, 1);
+    field.addLine("*");
+
+    HintField hint = field.getHintField();
+    assertThat(hint.getLine(0), equalTo("*"));
   }
 }

@@ -21,4 +21,12 @@ public class MineField {
     System.exit(1);
   }
 
+  public void addLine(String line) {
+
+
+  }
+
+  public HintField getHintField() {
+    throw new UnsupportedOperationException("Not implemented yet");
+  }
 }
