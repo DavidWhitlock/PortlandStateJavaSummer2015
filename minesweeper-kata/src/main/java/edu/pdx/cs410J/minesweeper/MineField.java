@@ -5,7 +5,12 @@ import edu.pdx.cs410J.AbstractPhoneBill;
 /**
  * The main class for the CS410J Phone Bill Project
  */
-public class Minesweeper {
+public class MineField {
+
+  public MineField(int rows, int columns) {
+    throw new IllegalArgumentException();
+
+  }
 
   public static void main(String[] args) {
     Class c = AbstractPhoneBill.class;  // Refer to one of Dave's classes so that we can be sure it is on the classpath
