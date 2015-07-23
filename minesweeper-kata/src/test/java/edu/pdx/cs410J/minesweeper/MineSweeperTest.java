@@ -9,7 +9,7 @@ import static org.junit.Assert.assertTrue;
 /**
  * Tests the functionality in the {@link Minesweeper} main class.
  */
-public class Project1Test extends InvokeMainTestCase {
+public class MineSweeperTest extends InvokeMainTestCase {
 
     /**
      * Invokes the main method of {@link Minesweeper} with the given arguments.
