@@ -41,12 +41,7 @@ public class PhoneBillGwt implements EntryPoint {
         String customerName = customerNameField.getText();
 
         PingServiceAsync async = GWT.create(PingService.class);
-        try {
-          async.ping(customerName, displayPhoneBill());
-
-        } catch (InvalidCustomerNameException e) {
-          Window.alert(e.getMessage());
-        }
+        async.ping(customerName, displayPhoneBill());
       }
 
       private AsyncCallback<AbstractPhoneBill> displayPhoneBill() {
@@ -54,7 +49,7 @@ public class PhoneBillGwt implements EntryPoint {
 
           @Override
           public void onFailure(Throwable ex) {
-            Window.alert(ex.toString());
+            Window.alert("onFailure: " + ex.toString());
           }
 
           @Override
