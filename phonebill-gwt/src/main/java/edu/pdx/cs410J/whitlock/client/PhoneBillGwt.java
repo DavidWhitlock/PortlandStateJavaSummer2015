@@ -39,15 +39,16 @@ public class PhoneBillGwt implements EntryPoint {
       @Override
       public void onClick(ClickEvent clickEvent) {
         String customerName = customerNameField.getText();
-        Window.alert("Your customer is named: " + customerName);
 
         PingServiceAsync async = GWT.create(PingService.class);
-        async.ping(new AsyncCallback<AbstractPhoneBill>() {
+        async.ping(customerName, new AsyncCallback<AbstractPhoneBill>() {
 
+          @Override
           public void onFailure(Throwable ex) {
             Window.alert(ex.toString());
           }
 
+          @Override
           public void onSuccess(AbstractPhoneBill phonebill) {
             StringBuilder sb = new StringBuilder(phonebill.toString());
             Collection<AbstractPhoneCall> calls = phonebill.getPhoneCalls();

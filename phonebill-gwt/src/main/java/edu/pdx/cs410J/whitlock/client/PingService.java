@@ -13,6 +13,6 @@ public interface PingService extends RemoteService {
   /**
    * Returns the a dummy Phone Bill
    */
-  public AbstractPhoneBill ping();
+  public AbstractPhoneBill ping(String customerName);
 
 }

@@ -9,11 +9,20 @@ import java.util.Collection;
 
 public class PhoneBill extends AbstractPhoneBill
 {
+  private String customerName;
   private Collection<AbstractPhoneCall> calls = new ArrayList<AbstractPhoneCall>();
+
+  public PhoneBill(String customerName) {
+    this.customerName = customerName;
+
+  }
+
+  public PhoneBill() {
+  }
 
   @Override
   public String getCustomer() {
-    return "CS410J";
+    return this.customerName;
   }
 
   @Override

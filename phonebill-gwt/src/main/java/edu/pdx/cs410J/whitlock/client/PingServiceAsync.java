@@ -9,7 +9,7 @@ import edu.pdx.cs410J.AbstractPhoneBill;
 public interface PingServiceAsync {
 
   /**
-   * Return the current date/time on the server
+   * Returns the a dummy Phone Bill
    */
-  void ping(AsyncCallback<AbstractPhoneBill> async);
+  void ping(String customerName, AsyncCallback<AbstractPhoneBill> async);
 }
