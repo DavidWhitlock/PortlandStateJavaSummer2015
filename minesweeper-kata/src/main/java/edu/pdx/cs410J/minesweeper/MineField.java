@@ -2,10 +2,15 @@ package edu.pdx.cs410J.minesweeper;
 
 import edu.pdx.cs410J.AbstractPhoneBill;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * The main class for the CS410J Phone Bill Project
  */
 public class MineField {
+
+  private List<String> rows = new ArrayList<>();
 
   public MineField(int rows, int columns) {
     if (checkBounds(rows) || columns <= 0 || columns > 100) {
@@ -27,12 +32,11 @@ public class MineField {
     System.exit(1);
   }
 
-  public void addLine(String line) {
-
-
+  public void addRow(String line) {
+    this.rows.add(line);
   }
 
   public HintField getHintField() {
-    return new HintField();
+    return new HintField(this.rows);
   }
 }

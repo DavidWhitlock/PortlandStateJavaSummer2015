@@ -56,9 +56,19 @@ public class MineFieldTest extends InvokeMainTestCase {
   @Test
   public void oneByOneMineFieldWithOneMineHasOneMine() {
     MineField field = new MineField(1, 1);
-    field.addLine("*");
+    field.addRow("*");
 
     HintField hint = field.getHintField();
-    assertThat(hint.getLine(0), equalTo("*"));
+    assertThat(hint.getCharAt(0), equalTo('*'));
   }
+
+  @Test
+  public void oneByOneMineFieldWithNoMinesHasZeroMines() {
+    MineField field = new MineField(1, 1);
+    field.addRow(".");
+
+    HintField hint = field.getHintField();
+    assertThat(hint.getCharAt(0), equalTo('0'));
+  }
+
 }
