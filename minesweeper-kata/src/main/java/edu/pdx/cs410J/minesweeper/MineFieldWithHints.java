@@ -26,16 +26,16 @@ public class MineFieldWithHints {
     }
 
     int numberOfAdjacentMines = 0;
-    if (hasMineToTheLeft(mineFieldMatrix, row, column)) {
+    if (hasMineToWest(mineFieldMatrix, row, column)) {
       numberOfAdjacentMines++;
     }
-    if (hasMineToTheRight(mineFieldMatrix, row, column)) {
+    if (hasMineToEast(mineFieldMatrix, row, column)) {
       numberOfAdjacentMines++;
     }
-    if (hasMineAbove(mineFieldMatrix, row, column)) {
+    if (hasMineToNorth(mineFieldMatrix, row, column)) {
       numberOfAdjacentMines++;
     }
-    if (hasMineBelow(mineFieldMatrix, row, column)) {
+    if (hasMineToSouth(mineFieldMatrix, row, column)) {
       numberOfAdjacentMines++;
     }
     if (hasMineToSouthEast(mineFieldMatrix, row, column)) {
@@ -47,62 +47,35 @@ public class MineFieldWithHints {
   }
 
   private boolean hasMineToSouthEast(char[][] mineFieldMatrix, int row, int column) {
-    int rowToSouth = row + 1;
-    int columnToEast = column + 1;
-    if (rowToSouth >= mineFieldMatrix.length) {
-      return false;
-
-    } else if (columnToEast >= mineFieldMatrix[0].length) {
-      return false;
-
-    } else {
-      return cellContainsMine(mineFieldMatrix, rowToSouth, columnToEast);
-    }
-
+    return cellContainsMine(mineFieldMatrix, row + 1, column + 1);
   }
 
-  private boolean hasMineBelow(char[][] mineFieldMatrix, int row, int column) {
-    int rowBelow = row + 1;
-    if (rowBelow >= mineFieldMatrix.length) {
-      return false;
-
-    } else {
-      return cellContainsMine(mineFieldMatrix, rowBelow, column);
-    }
+  private boolean hasMineToSouth(char[][] mineFieldMatrix, int row, int column) {
+    return cellContainsMine(mineFieldMatrix, row + 1, column);
   }
 
-  private boolean hasMineAbove(char[][] mineFieldMatrix, int row, int column) {
-    int rowAbove = row - 1;
-    if (rowAbove < 0) {
-      return false;
-
-    } else {
-      return cellContainsMine(mineFieldMatrix, rowAbove, column);
-    }
+  private boolean hasMineToNorth(char[][] mineFieldMatrix, int row, int column) {
+    return cellContainsMine(mineFieldMatrix, row - 1, column);
   }
 
-  private boolean hasMineToTheRight(char[][] mineFieldMatrix, int row, int column) {
-    int columnToTheRight = column + 1;
-    if (columnToTheRight >= mineFieldMatrix[0].length) {
-      return false;
-
-    } else {
-      return cellContainsMine(mineFieldMatrix, row, columnToTheRight);
-    }
+  private boolean hasMineToEast(char[][] mineFieldMatrix, int row, int column) {
+    return cellContainsMine(mineFieldMatrix, row, column + 1);
   }
 
-  private boolean hasMineToTheLeft(char[][] mineFieldMatrix, int row, int column) {
-    int columnToTheLeft = column - 1;
-    if (columnToTheLeft < 0) {
-      return false;
-
-    } else {
-      return cellContainsMine(mineFieldMatrix, row, columnToTheLeft);
-    }
+  private boolean hasMineToWest(char[][] mineFieldMatrix, int row, int column) {
+    return cellContainsMine(mineFieldMatrix, row, column - 1);
   }
 
   private boolean cellContainsMine(char[][] mineFieldMatrix, int row, int column) {
-    return mineFieldMatrix[row][column] == '*';
+    if (row < 0 || column < 0) {
+      return false;
+
+    } else if (row >= mineFieldMatrix.length || column >= mineFieldMatrix[0].length) {
+      return false;
+
+    } else {
+      return mineFieldMatrix[row][column] == '*';
+    }
   }
 
   @VisibleForTesting
