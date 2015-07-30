@@ -1,5 +1,7 @@
 package edu.pdx.cs410J.whitlock;
 
+import com.google.common.annotations.VisibleForTesting;
+
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -50,7 +52,7 @@ public class PhoneBillServlet extends HttpServlet
 
         String key = getParameter( "key", request );
         if (key == null) {
-            missingRequiredParameter( response, "key" );
+            missingRequiredParameter(response, "key");
             return;
         }
 
@@ -78,10 +80,10 @@ public class PhoneBillServlet extends HttpServlet
         throws IOException
     {
         PrintWriter pw = response.getWriter();
-        pw.println( Messages.missingRequiredParameter(parameterName));
+        pw.println(Messages.missingRequiredParameter(parameterName));
         pw.flush();
         
-        response.setStatus( HttpServletResponse.SC_PRECONDITION_FAILED );
+        response.setStatus(HttpServletResponse.SC_PRECONDITION_FAILED);
     }
 
     /**
@@ -96,7 +98,7 @@ public class PhoneBillServlet extends HttpServlet
 
         PrintWriter pw = response.getWriter();
         pw.println(Messages.getMappingCount( value != null ? 1 : 0 ));
-        pw.println(Messages.formatKeyValuePair( key, value ));
+        pw.println(Messages.formatKeyValuePair(key, value));
 
         pw.flush();
 
@@ -112,7 +114,7 @@ public class PhoneBillServlet extends HttpServlet
     private void writeAllMappings( HttpServletResponse response ) throws IOException
     {
         PrintWriter pw = response.getWriter();
-        pw.println(Messages.getMappingCount( data.size() ));
+        pw.println(Messages.getMappingCount(data.size()));
 
         for (Map.Entry<String, String> entry : this.data.entrySet()) {
             pw.println(Messages.formatKeyValuePair(entry.getKey(), entry.getValue()));
@@ -139,4 +141,8 @@ public class PhoneBillServlet extends HttpServlet
       }
     }
 
+    @VisibleForTesting
+    String getValue(String key) {
+        return this.data.get(key);
+    }
 }
