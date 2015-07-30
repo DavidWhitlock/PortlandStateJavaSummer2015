@@ -2,6 +2,7 @@ package edu.pdx.cs410J.whitlock.server;
 
 import com.google.gwt.user.server.rpc.RemoteServiceServlet;
 import edu.pdx.cs410J.AbstractPhoneBill;
+import edu.pdx.cs410J.whitlock.client.InvalidCustomerNameException;
 import edu.pdx.cs410J.whitlock.client.PhoneBill;
 import edu.pdx.cs410J.whitlock.client.PhoneCall;
 import edu.pdx.cs410J.whitlock.client.PingService;
@@ -12,7 +13,10 @@ import edu.pdx.cs410J.whitlock.client.PingService;
 public class PingServiceImpl extends RemoteServiceServlet implements PingService
 {
   @Override
-  public AbstractPhoneBill ping(String customerName) {
+  public AbstractPhoneBill ping(String customerName) throws InvalidCustomerNameException {
+    if (customerName == null || "".equals(customerName)) {
+      throw new InvalidCustomerNameException("Customer name cannot be blank");
+    }
     PhoneBill phonebill = new PhoneBill(customerName);
     phonebill.addPhoneCall(new PhoneCall());
     return phonebill;

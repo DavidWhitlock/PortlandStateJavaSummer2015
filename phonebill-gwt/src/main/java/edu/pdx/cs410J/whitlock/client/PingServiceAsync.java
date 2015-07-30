@@ -11,5 +11,5 @@ public interface PingServiceAsync {
   /**
    * Returns the a dummy Phone Bill
    */
-  void ping(String customerName, AsyncCallback<AbstractPhoneBill> async);
+  void ping(String customerName, AsyncCallback<AbstractPhoneBill> async) throws InvalidCustomerNameException;
 }
