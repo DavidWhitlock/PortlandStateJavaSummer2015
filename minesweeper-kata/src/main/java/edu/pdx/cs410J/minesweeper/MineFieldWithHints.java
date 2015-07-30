@@ -2,10 +2,10 @@ package edu.pdx.cs410J.minesweeper;
 
 import java.util.List;
 
-public class HintField {
+public class MineFieldWithHints {
   private char charAtZeroZero;
 
-  public HintField(List<String> rows) {
+  public MineFieldWithHints(List<String> rows) {
     char c = rows.get(0).charAt(0);
     if (c == '*') {
       charAtZeroZero = '*';

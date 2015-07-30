@@ -36,7 +36,7 @@ public class MineField {
     this.rows.add(line);
   }
 
-  public HintField getHintField() {
-    return new HintField(this.rows);
+  public MineFieldWithHints getHints() {
+    return new MineFieldWithHints(this.rows);
   }
 }
