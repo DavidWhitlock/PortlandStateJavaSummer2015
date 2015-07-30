@@ -49,7 +49,12 @@ public class PhoneBillGwt implements EntryPoint {
 
           @Override
           public void onFailure(Throwable ex) {
-            Window.alert("onFailure: " + ex.toString());
+            if (ex instanceof InvalidCustomerNameException) {
+              Window.alert("Please enter a valid customer name");
+
+            } else {
+              Window.alert("onFailure: " + ex.toString());
+            }
           }
 
           @Override
