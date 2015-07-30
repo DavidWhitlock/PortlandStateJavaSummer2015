@@ -8,8 +8,9 @@ import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.RootPanel;
-import edu.pdx.cs410J.AbstractPhoneCall;
+import com.google.gwt.user.client.ui.TextBox;
 import edu.pdx.cs410J.AbstractPhoneBill;
+import edu.pdx.cs410J.AbstractPhoneCall;
 
 import java.util.Collection;
 
@@ -17,33 +18,47 @@ import java.util.Collection;
  * A basic GWT class that makes sure that we can send an Phone Bill back from the server
  */
 public class PhoneBillGwt implements EntryPoint {
+
+  private TextBox customerNameField;
+
   public void onModuleLoad() {
+    customerNameField = new TextBox();
+    customerNameField.setMaxLength(10);
+
+
     Button button = new Button("Ping Server");
-    button.addClickHandler(new ClickHandler() {
-        public void onClick( ClickEvent clickEvent )
-        {
-            PingServiceAsync async = GWT.create( PingService.class );
-            async.ping( new AsyncCallback<AbstractPhoneBill>() {
+    button.addClickHandler(createNewPhoneBillOnServer());
 
-                public void onFailure( Throwable ex )
-                {
-                    Window.alert(ex.toString());
-                }
+    RootPanel rootPanel = RootPanel.get();
+    rootPanel.add(button);
+    rootPanel.add(customerNameField);
+  }
 
-                public void onSuccess( AbstractPhoneBill phonebill )
-                {
-                    StringBuilder sb = new StringBuilder( phonebill.toString() );
-                    Collection<AbstractPhoneCall> calls = phonebill.getPhoneCalls();
-                    for ( AbstractPhoneCall call : calls ) {
-                        sb.append(call);
-                        sb.append("\n");
-                    }
-                    Window.alert( sb.toString() );
-                }
-            });
-        }
-    });
-      RootPanel rootPanel = RootPanel.get();
-      rootPanel.add(button);
+  private ClickHandler createNewPhoneBillOnServer() {
+    return new ClickHandler() {
+      @Override
+      public void onClick(ClickEvent clickEvent) {
+        String customerName = customerNameField.getText();
+        Window.alert("Your customer is named: " + customerName);
+
+        PingServiceAsync async = GWT.create(PingService.class);
+        async.ping(new AsyncCallback<AbstractPhoneBill>() {
+
+          public void onFailure(Throwable ex) {
+            Window.alert(ex.toString());
+          }
+
+          public void onSuccess(AbstractPhoneBill phonebill) {
+            StringBuilder sb = new StringBuilder(phonebill.toString());
+            Collection<AbstractPhoneCall> calls = phonebill.getPhoneCalls();
+            for (AbstractPhoneCall call : calls) {
+              sb.append(call);
+              sb.append("\n");
+            }
+            Window.alert(sb.toString());
+          }
+        });
+      }
+    };
   }
 }
