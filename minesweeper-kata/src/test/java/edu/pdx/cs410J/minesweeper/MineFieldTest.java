@@ -59,7 +59,7 @@ public class MineFieldTest extends InvokeMainTestCase {
     field.addRow("*");
 
     HintField hint = field.getHintField();
-    assertThat(hint.getCharAt(0), equalTo('*'));
+    assertThat(hint.getCharAt(0, 0), equalTo('*'));
   }
 
   @Test
@@ -68,7 +68,7 @@ public class MineFieldTest extends InvokeMainTestCase {
     field.addRow(".");
 
     HintField hint = field.getHintField();
-    assertThat(hint.getCharAt(0), equalTo('0'));
+    assertThat(hint.getCharAt(0, 0), equalTo('0'));
   }
 
 }

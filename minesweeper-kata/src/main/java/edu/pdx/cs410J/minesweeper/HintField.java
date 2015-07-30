@@ -15,7 +15,7 @@ public class HintField {
     }
   }
 
-  public char getCharAt(int lineNumber) {
+  public char getCharAt(int row, int column) {
     return charAtZeroZero;
   }
 }
