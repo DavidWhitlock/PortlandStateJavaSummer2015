@@ -26,7 +26,27 @@ public class MineFieldWithHints {
       return '*';
     }
 
-    return '1';
+    int numberOfAdjacentMines = 0;
+    if (hasMineToTheLeft(mineFieldMatrix, row, column)) {
+      numberOfAdjacentMines++;
+    }
+
+    assert numberOfAdjacentMines < 9;
+    return String.valueOf(numberOfAdjacentMines).charAt(0);
+  }
+
+  private boolean hasMineToTheLeft(char[][] mineFieldMatrix, int row, int column) {
+    int columnToTheLeft = column - 1;
+    if (columnToTheLeft < 0) {
+      return false;
+
+    } else {
+      return cellContainsMine(mineFieldMatrix, row, columnToTheLeft);
+    }
+  }
+
+  private boolean cellContainsMine(char[][] mineFieldMatrix, int row, int column) {
+    return mineFieldMatrix[row][column] == '*';
   }
 
   @VisibleForTesting
