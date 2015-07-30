@@ -152,4 +152,54 @@ public class MineFieldTest extends InvokeMainTestCase {
     assertThat(hint.getCharAt(1, 0), equalTo('*'));
   }
 
+  @Test
+  public void twoMinesOnEitherSideOfASpace() {
+    MineField field = new MineField(1, 3);
+    field.addRow("*.*");
+
+    MineFieldWithHints hint = field.getHints();
+    assertThat(hint.getCharAt(0, 0), equalTo('*'));
+    assertThat(hint.getCharAt(0, 1), equalTo('2'));
+    assertThat(hint.getCharAt(0, 2), equalTo('*'));
+  }
+
+  @Test
+  public void twoMinesAboveAndBelowASpace() {
+    MineField field = new MineField(3, 1);
+    field.addRow("*");
+    field.addRow(".");
+    field.addRow("*");
+
+    MineFieldWithHints hint = field.getHints();
+    assertThat(hint.getCharAt(0, 0), equalTo('*'));
+    assertThat(hint.getCharAt(1, 0), equalTo('2'));
+    assertThat(hint.getCharAt(2, 0), equalTo('*'));
+  }
+
+  @Test
+  public void mineToRightAndBelowSpace() {
+    MineField field = new MineField(2, 2);
+    field.addRow(".*");
+    field.addRow("*.");
+
+    MineFieldWithHints hint = field.getHints();
+    assertThat(hint.getCharAt(0, 0), equalTo('2'));
+    assertThat(hint.getCharAt(0, 1), equalTo('*'));
+    assertThat(hint.getCharAt(1, 0), equalTo('*'));
+    assertThat(hint.getCharAt(1, 1), equalTo('2'));
+  }
+
+  @Test
+  public void mineToRightBelowAndSouthEastOfSpace() {
+    MineField field = new MineField(2, 2);
+    field.addRow(".*");
+    field.addRow("**");
+
+    MineFieldWithHints hint = field.getHints();
+    assertThat(hint.getCharAt(0, 0), equalTo('3'));
+    assertThat(hint.getCharAt(0, 1), equalTo('*'));
+    assertThat(hint.getCharAt(1, 0), equalTo('*'));
+    assertThat(hint.getCharAt(1, 1), equalTo('*'));
+  }
+
 }

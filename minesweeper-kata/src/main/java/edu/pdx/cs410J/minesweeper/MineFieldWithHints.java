@@ -21,8 +21,7 @@ public class MineFieldWithHints {
   }
 
   private char getGridCellValue(char[][] mineFieldMatrix, int row, int column) {
-    char cell = mineFieldMatrix[row][column];
-    if (cell == '*') {
+    if (cellContainsMine(mineFieldMatrix, row, column)) {
       return '*';
     }
 
@@ -39,9 +38,27 @@ public class MineFieldWithHints {
     if (hasMineBelow(mineFieldMatrix, row, column)) {
       numberOfAdjacentMines++;
     }
+    if (hasMineToSouthEast(mineFieldMatrix, row, column)) {
+      numberOfAdjacentMines++;
+    }
 
     assert numberOfAdjacentMines < 9;
     return String.valueOf(numberOfAdjacentMines).charAt(0);
+  }
+
+  private boolean hasMineToSouthEast(char[][] mineFieldMatrix, int row, int column) {
+    int rowToSouth = row + 1;
+    int columnToEast = column + 1;
+    if (rowToSouth >= mineFieldMatrix.length) {
+      return false;
+
+    } else if (columnToEast >= mineFieldMatrix[0].length) {
+      return false;
+
+    } else {
+      return cellContainsMine(mineFieldMatrix, rowToSouth, columnToEast);
+    }
+
   }
 
   private boolean hasMineBelow(char[][] mineFieldMatrix, int row, int column) {
