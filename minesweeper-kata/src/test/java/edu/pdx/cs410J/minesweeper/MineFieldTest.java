@@ -1,7 +1,6 @@
 package edu.pdx.cs410J.minesweeper;
 
 import edu.pdx.cs410J.InvokeMainTestCase;
-import org.junit.Ignore;
 import org.junit.Test;
 
 import static org.hamcrest.CoreMatchers.equalTo;
@@ -14,10 +13,6 @@ public class MineFieldTest extends InvokeMainTestCase {
 
   // What should we test?
   // Is there a matrix?
-  // Zero by zero matrix
-  // Zero by non-zero matrix
-  // Negative matrix size
-  // Non-zero by non-zero matrix
   // Make sure that the matrix specified by mine field matches dimensions
   // Making sure that the number of ajancent mines is correct
   // No mines
@@ -32,18 +27,30 @@ public class MineFieldTest extends InvokeMainTestCase {
   }
 
   @Test(expected = IllegalArgumentException.class)
-  public void zeroByNonZeroThrowsIllegalArgumentExcepion(){
+  public void zeroByNonZeroThrowsIllegalArgumentException(){
 
     new MineField(0, 1);
 
   }
 
-  @Ignore
   @Test(expected = IllegalArgumentException.class)
-  public void nonZeroByZeroThrowsIllegalArgumentExcepion(){
+  public void nonZeroByZeroThrowsIllegalArgumentException(){
+    new MineField(2, 0);
+  }
 
+  @Test
+  public void nonZeroByNonZeroIsOkay() {
+    new MineField(1, 1);
+  }
 
+  @Test(expected = IllegalArgumentException.class)
+  public void moreThan100RowsThrowsIllegalArgumentException() {
+    new MineField(101, 1);
+  }
 
+  @Test(expected = IllegalArgumentException.class)
+  public void moreThan100ColumnsThrowsIllegalArgumentException() {
+    new MineField(1, 101);
   }
 
   @Test

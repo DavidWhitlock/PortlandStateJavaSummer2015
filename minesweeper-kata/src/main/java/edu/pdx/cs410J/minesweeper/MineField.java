@@ -8,8 +8,14 @@ import edu.pdx.cs410J.AbstractPhoneBill;
 public class MineField {
 
   public MineField(int rows, int columns) {
-    throw new IllegalArgumentException();
+    if (checkBounds(rows) || columns <= 0 || columns > 100) {
+      throw new IllegalArgumentException("%dx%d is not a valid dimension for a mine field");
+    }
 
+  }
+
+  private boolean checkBounds(int dimension) {
+    return dimension <= 0 || dimension > 100;
   }
 
   public static void main(String[] args) {
@@ -27,6 +33,6 @@ public class MineField {
   }
 
   public HintField getHintField() {
-    throw new UnsupportedOperationException("Not implemented yet");
+    return new HintField();
   }
 }
