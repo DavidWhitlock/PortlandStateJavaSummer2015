@@ -27,14 +27,14 @@ public class PhoneBillServletTest {
     String key = "KEY";
     String value = "VALUE";
 
-    HttpServletRequest request = new MockHttpServletRequest();
-    HttpServletResponse response = new MockHttpServletResponse();
+    HttpServletRequest request = new HttpServletRequestStub();
+    HttpServletResponse response = new HttpServletResponseStub();
     servlet.doPost(request, response);
 
     assertThat(servlet.getValue(key), equalTo(value));
   }
 
-  private class MockHttpServletRequest implements HttpServletRequest {
+  private class HttpServletRequestStub implements HttpServletRequest {
     @Override
     public String getAuthType() {
       throw new UnsupportedOperationException("This method is not implemented yet");
@@ -313,7 +313,7 @@ public class PhoneBillServletTest {
     }
   }
 
-  private class MockHttpServletResponse implements HttpServletResponse {
+  private class HttpServletResponseStub implements HttpServletResponse {
     @Override
     public void addCookie(Cookie cookie) {
       throw new UnsupportedOperationException("This method is not implemented yet");
