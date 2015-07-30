@@ -119,4 +119,37 @@ public class MineFieldTest extends InvokeMainTestCase {
   private void assertThatCellHasValue(char[][] matrix, int row, int column, char expectedValue) {
     assertThat(matrix[row][column], equalTo(expectedValue));
   }
+
+  @Test
+  public void oneMineOneSpaceInOneRowMineToTheRightOfSpace() {
+    MineField field = new MineField(1, 2);
+    field.addRow(".*");
+
+    MineFieldWithHints hint = field.getHints();
+    assertThat(hint.getCharAt(0, 0), equalTo('1'));
+    assertThat(hint.getCharAt(0, 1), equalTo('*'));
+  }
+
+  @Test
+  public void oneMineOneSpaceInOneColumnMineAboveSpace() {
+    MineField field = new MineField(2, 1);
+    field.addRow("*");
+    field.addRow(".");
+
+    MineFieldWithHints hint = field.getHints();
+    assertThat(hint.getCharAt(0, 0), equalTo('*'));
+    assertThat(hint.getCharAt(1, 0), equalTo('1'));
+  }
+
+  @Test
+  public void oneMineOneSpaceInOneColumnMineBelowSpace() {
+    MineField field = new MineField(2, 1);
+    field.addRow(".");
+    field.addRow("*");
+
+    MineFieldWithHints hint = field.getHints();
+    assertThat(hint.getCharAt(0, 0), equalTo('1'));
+    assertThat(hint.getCharAt(1, 0), equalTo('*'));
+  }
+
 }

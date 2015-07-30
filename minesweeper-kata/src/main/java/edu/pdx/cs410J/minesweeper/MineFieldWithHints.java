@@ -30,9 +30,48 @@ public class MineFieldWithHints {
     if (hasMineToTheLeft(mineFieldMatrix, row, column)) {
       numberOfAdjacentMines++;
     }
+    if (hasMineToTheRight(mineFieldMatrix, row, column)) {
+      numberOfAdjacentMines++;
+    }
+    if (hasMineAbove(mineFieldMatrix, row, column)) {
+      numberOfAdjacentMines++;
+    }
+    if (hasMineBelow(mineFieldMatrix, row, column)) {
+      numberOfAdjacentMines++;
+    }
 
     assert numberOfAdjacentMines < 9;
     return String.valueOf(numberOfAdjacentMines).charAt(0);
+  }
+
+  private boolean hasMineBelow(char[][] mineFieldMatrix, int row, int column) {
+    int rowBelow = row + 1;
+    if (rowBelow >= mineFieldMatrix.length) {
+      return false;
+
+    } else {
+      return cellContainsMine(mineFieldMatrix, rowBelow, column);
+    }
+  }
+
+  private boolean hasMineAbove(char[][] mineFieldMatrix, int row, int column) {
+    int rowAbove = row - 1;
+    if (rowAbove < 0) {
+      return false;
+
+    } else {
+      return cellContainsMine(mineFieldMatrix, rowAbove, column);
+    }
+  }
+
+  private boolean hasMineToTheRight(char[][] mineFieldMatrix, int row, int column) {
+    int columnToTheRight = column + 1;
+    if (columnToTheRight >= mineFieldMatrix[0].length) {
+      return false;
+
+    } else {
+      return cellContainsMine(mineFieldMatrix, row, columnToTheRight);
+    }
   }
 
   private boolean hasMineToTheLeft(char[][] mineFieldMatrix, int row, int column) {
