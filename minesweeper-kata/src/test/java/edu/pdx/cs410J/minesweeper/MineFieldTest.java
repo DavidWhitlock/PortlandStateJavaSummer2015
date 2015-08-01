@@ -202,4 +202,63 @@ public class MineFieldTest extends InvokeMainTestCase {
     assertThat(hint.getCharAt(1, 1), equalTo('*'));
   }
 
+  @Test
+  public void mineToLeftBelowAndSouthWestOfSpace() {
+    MineField field = new MineField(2, 2);
+    field.addRow("*.");
+    field.addRow("**");
+
+    MineFieldWithHints hint = field.getHints();
+    assertThat(hint.getCharAt(0, 0), equalTo('*'));
+    assertThat(hint.getCharAt(0, 1), equalTo('3'));
+    assertThat(hint.getCharAt(1, 0), equalTo('*'));
+    assertThat(hint.getCharAt(1, 1), equalTo('*'));
+  }
+
+  @Test
+  public void mineToRightAboveAndNorthEastOfSpace() {
+    MineField field = new MineField(2, 2);
+    field.addRow("**");
+    field.addRow(".*");
+
+    MineFieldWithHints hint = field.getHints();
+    assertThat(hint.getCharAt(0, 0), equalTo('*'));
+    assertThat(hint.getCharAt(0, 1), equalTo('*'));
+    assertThat(hint.getCharAt(1, 0), equalTo('3'));
+    assertThat(hint.getCharAt(1, 1), equalTo('*'));
+  }
+
+  @Test
+  public void mineToLeftAboveAndNorthWestOfSpace() {
+    MineField field = new MineField(2, 2);
+    field.addRow("**");
+    field.addRow("*.");
+
+    MineFieldWithHints hint = field.getHints();
+    assertThat(hint.getCharAt(0, 0), equalTo('*'));
+    assertThat(hint.getCharAt(0, 1), equalTo('*'));
+    assertThat(hint.getCharAt(1, 0), equalTo('*'));
+    assertThat(hint.getCharAt(1, 1), equalTo('3'));
+  }
+
+  @Test
+  public void spaceSurroundedByMines() {
+    MineField field = new MineField(3, 3);
+    field.addRow("***");
+    field.addRow("*.*");
+    field.addRow("***");
+
+    MineFieldWithHints hint = field.getHints();
+    assertThat(hint.getCharAt(0, 0), equalTo('*'));
+    assertThat(hint.getCharAt(0, 1), equalTo('*'));
+    assertThat(hint.getCharAt(0, 2), equalTo('*'));
+    assertThat(hint.getCharAt(1, 0), equalTo('*'));
+    assertThat(hint.getCharAt(1, 1), equalTo('8'));
+    assertThat(hint.getCharAt(1, 2), equalTo('*'));
+    assertThat(hint.getCharAt(2, 0), equalTo('*'));
+    assertThat(hint.getCharAt(2, 1), equalTo('*'));
+    assertThat(hint.getCharAt(2, 2), equalTo('*'));
+  }
+
+
 }

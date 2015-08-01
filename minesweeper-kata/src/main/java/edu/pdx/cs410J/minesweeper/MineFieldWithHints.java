@@ -41,9 +41,30 @@ public class MineFieldWithHints {
     if (hasMineToSouthEast(mineFieldMatrix, row, column)) {
       numberOfAdjacentMines++;
     }
+    if (hasMineToSouthWest(mineFieldMatrix, row, column)) {
+      numberOfAdjacentMines++;
+    }
+    if (hasMineToNorthEast(mineFieldMatrix, row, column)) {
+      numberOfAdjacentMines++;
+    }
+    if (hasMineToNorthWest(mineFieldMatrix, row, column)) {
+      numberOfAdjacentMines++;
+    }
 
     assert numberOfAdjacentMines < 9;
     return String.valueOf(numberOfAdjacentMines).charAt(0);
+  }
+
+  private boolean hasMineToNorthWest(char[][] mineFieldMatrix, int row, int column) {
+    return cellContainsMine(mineFieldMatrix, row - 1, column - 1);
+  }
+
+  private boolean hasMineToNorthEast(char[][] mineFieldMatrix, int row, int column) {
+    return cellContainsMine(mineFieldMatrix, row - 1, column + 1);
+  }
+
+  private boolean hasMineToSouthWest(char[][] mineFieldMatrix, int row, int column) {
+    return cellContainsMine(mineFieldMatrix, row + 1, column - 1);
   }
 
   private boolean hasMineToSouthEast(char[][] mineFieldMatrix, int row, int column) {
