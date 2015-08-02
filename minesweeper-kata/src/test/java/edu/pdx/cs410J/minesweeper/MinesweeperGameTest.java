@@ -78,4 +78,37 @@ public class MinesweeperGameTest {
     assertThat(result.getGameResult(), equalTo(WON));
   }
 
+  @Test
+  public void probeEmptyFieldRevealsAllAndWinsGame() {
+    MineGameGenerator generator = buildMineGameGenerator("..", "..");
+    MinesweeperGame game = new MinesweeperGame(2, 2, generator);
+
+    GameState result = game.probe(1, 1);
+    assertThat(result.getCharAt(0, 0), equalTo(' '));
+    assertThat(result.getCharAt(0, 1), equalTo(' '));
+    assertThat(result.getCharAt(1, 0), equalTo(' '));
+    assertThat(result.getCharAt(1, 1), equalTo(' '));
+
+    assertThat(result.getGameResult(), equalTo(WON));
+  }
+
+  @Test
+  public void probe3x3GridWithMineInTopLeftRevealsALot() {
+    MineGameGenerator generator = buildMineGameGenerator("*..", "...", "...");
+    MinesweeperGame game = new MinesweeperGame(3, 3, generator);
+
+    GameState result = game.probe(2, 2);
+    assertThat(result.getCharAt(0, 0), equalTo('?'));
+    assertThat(result.getCharAt(0, 1), equalTo('1'));
+    assertThat(result.getCharAt(0, 2), equalTo(' '));
+    assertThat(result.getCharAt(1, 0), equalTo('1'));
+    assertThat(result.getCharAt(1, 1), equalTo('1'));
+    assertThat(result.getCharAt(1, 2), equalTo(' '));
+    assertThat(result.getCharAt(2, 0), equalTo(' '));
+    assertThat(result.getCharAt(2, 1), equalTo(' '));
+    assertThat(result.getCharAt(2, 2), equalTo(' '));
+
+    assertThat(result.getGameResult(), equalTo(WON));
+  }
+
 }

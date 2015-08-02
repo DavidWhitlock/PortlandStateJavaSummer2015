@@ -27,27 +27,47 @@ public class MinesweeperGame {
   }
 
   public GameState probe(int row, int column) {
-    char cell = mineFieldWithHints.getCharAt(row, column);
+    if (rowAndColumnAreInBounds(row, column)) {
+      char cell = mineFieldWithHints.getCharAt(row, column);
 
-    if (cell == '0') {
-      this.gameState.setCharAt(row, column, ' ');
+      if (cell == '0') {
+        if (this.gameState.getCharAt(row, column) != ' ') {
+          this.gameState.setCharAt(row, column, ' ');
+          probeAllAround(row, column);
+        }
 
-    } else {
-      this.gameState.setCharAt(row, column, cell);
-    }
+      } else {
+        this.gameState.setCharAt(row, column, cell);
+      }
 
-    if (cell == '*') {
-      this.gameState.setGameResult(LOST);
+      if (cell == '*') {
+        this.gameState.setGameResult(LOST);
 
 
-    } else if (onlyMinesRemainUnprobed()) {
-      this.gameState.setGameResult(WON);
+      } else if (onlyMinesRemainUnprobed()) {
+        this.gameState.setGameResult(WON);
 
-    } else {
-      this.gameState.setGameResult(IN_PROGRESS);
+      } else {
+        this.gameState.setGameResult(IN_PROGRESS);
+      }
     }
 
     return this.gameState;
+  }
+
+  private void probeAllAround(int row, int column) {
+    for (int r = row - 1; r <= row + 1; r++) {
+      for (int c = column - 1; c <= column + 1; c++) {
+        if (!(r == row && c == column)) {
+          probe(r, c);
+        }
+      }
+    }
+
+  }
+
+  private boolean rowAndColumnAreInBounds(int row, int column) {
+    return row >= 0 && column >= 0 && row < gameState.getNumberOfRows() && column < gameState.getNumberOfColumns();
   }
 
   private boolean onlyMinesRemainUnprobed() {
