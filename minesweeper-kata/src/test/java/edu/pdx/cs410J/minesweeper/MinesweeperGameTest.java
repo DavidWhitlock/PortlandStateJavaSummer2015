@@ -3,6 +3,8 @@ package edu.pdx.cs410J.minesweeper;
 import edu.pdx.cs410J.minesweeper.MinesweeperGame.MineGameGenerator;
 import org.junit.Test;
 
+import static edu.pdx.cs410J.minesweeper.GameState.GameResult.LOST;
+import static edu.pdx.cs410J.minesweeper.GameState.GameResult.WON;
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.MatcherAssert.assertThat;
 
@@ -18,7 +20,7 @@ public class MinesweeperGameTest {
     assertThat(result.getNumberOfRows(), equalTo(numberOfRows));
     assertThat(result.getNumberOfColumns(), equalTo(numberOfColumns));
     assertThat(result.getCharAt(0, 0), equalTo(' '));
-    assertThat(result.getGameResult(), equalTo(GameState.GameResult.WON));
+    assertThat(result.getGameResult(), equalTo(WON));
   }
 
   @Test
@@ -28,7 +30,7 @@ public class MinesweeperGameTest {
 
     GameState result = game.probe(0, 0);
     assertThat(result.getCharAt(0, 0), equalTo('*'));
-    assertThat(result.getGameResult(), equalTo(GameState.GameResult.LOST));
+    assertThat(result.getGameResult(), equalTo(LOST));
   }
 
   private MineGameGenerator buildMineGameGenerator(String... rows) {
