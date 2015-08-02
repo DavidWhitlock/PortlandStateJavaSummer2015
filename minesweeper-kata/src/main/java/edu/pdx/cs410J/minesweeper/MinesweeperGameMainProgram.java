@@ -6,6 +6,7 @@ import java.io.InputStreamReader;
 import java.io.PrintStream;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.IntStream;
 
 public class MinesweeperGameMainProgram {
 
@@ -105,15 +106,28 @@ public class MinesweeperGameMainProgram {
 
   }
 
-  private void printGameState(GameState probe) {
+  private void printGameState(GameState state) {
     PrintStream out = System.out;
-    for (int row = 0; row < probe.getNumberOfRows(); row++) {
-      for (int column = 0; column < probe.getNumberOfColumns(); column++) {
-        out.print(probe.getCharAt(row, column));
+
+    out.print("  ");
+    IntStream.range(0, state.getNumberOfColumns()).forEach(out::print);
+    out.println();
+
+    out.print(" +");
+    IntStream.range(0, state.getNumberOfColumns()).forEach(i -> out.print("-"));
+    out.println("+");
+
+    for (int row = 0; row < state.getNumberOfRows(); row++) {
+      out.print(row + "|");
+      for (int column = 0; column < state.getNumberOfColumns(); column++) {
+        out.print(state.getCharAt(row, column));
       }
-      out.println();
+      out.println("|");
     }
 
+    out.print(" +");
+    IntStream.range(0, state.getNumberOfColumns()).forEach(i -> out.print("-"));
+    out.println("+");
   }
 
   private RowAndColumn askUserForRowAndColumn() throws InvalidRowAndColumnException {
