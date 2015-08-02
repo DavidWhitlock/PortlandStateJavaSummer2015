@@ -18,9 +18,6 @@ public class MineFieldTest extends InvokeMainTestCase {
   // Is there a matrix?
   // Make sure that the matrix specified by mine field matches dimensions
   // Making sure that the number of ajancent mines is correct
-  // No mines
-  // All mines
-  // Are mines correctly identified in output?
   // Bad character (not * and not .) in input
   // Make sure input has newlines
 
