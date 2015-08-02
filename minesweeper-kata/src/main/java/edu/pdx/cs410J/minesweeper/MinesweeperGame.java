@@ -42,10 +42,11 @@ public class MinesweeperGame {
 
       if (cell == '*') {
         this.gameState.setGameResult(LOST);
-
+        revealAllCells();
 
       } else if (onlyMinesRemainUnprobed()) {
         this.gameState.setGameResult(WON);
+        revealAllCells();
 
       } else {
         this.gameState.setGameResult(IN_PROGRESS);
@@ -53,6 +54,21 @@ public class MinesweeperGame {
     }
 
     return this.gameState;
+  }
+
+  private void revealAllCells() {
+    for (int row = 0; row < gameState.getNumberOfRows(); row++) {
+      for (int column = 0; column < gameState.getNumberOfColumns(); column++) {
+        char cell = mineFieldWithHints.getCharAt(row, column);
+
+        if (cell == '0') {
+          this.gameState.setCharAt(row, column, ' ');
+
+        } else {
+          this.gameState.setCharAt(row, column, cell);
+        }
+      }
+    }
   }
 
   private void probeAllAround(int row, int column) {
