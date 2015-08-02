@@ -84,6 +84,10 @@ public class MinesweeperGame {
     return true;
   }
 
+  public GameState.GameResult getGameResult() {
+    return this.gameState.getGameResult();
+  }
+
   interface MineGameGenerator {
 
     char getCharAt(int row, int column);
