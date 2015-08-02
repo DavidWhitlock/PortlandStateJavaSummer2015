@@ -26,65 +26,17 @@ public class MineFieldWithHints {
     }
 
     int numberOfAdjacentMines = 0;
-    if (hasMineToWest(mineFieldMatrix, row, column)) {
-      numberOfAdjacentMines++;
-    }
-    if (hasMineToEast(mineFieldMatrix, row, column)) {
-      numberOfAdjacentMines++;
-    }
-    if (hasMineToNorth(mineFieldMatrix, row, column)) {
-      numberOfAdjacentMines++;
-    }
-    if (hasMineToSouth(mineFieldMatrix, row, column)) {
-      numberOfAdjacentMines++;
-    }
-    if (hasMineToSouthEast(mineFieldMatrix, row, column)) {
-      numberOfAdjacentMines++;
-    }
-    if (hasMineToSouthWest(mineFieldMatrix, row, column)) {
-      numberOfAdjacentMines++;
-    }
-    if (hasMineToNorthEast(mineFieldMatrix, row, column)) {
-      numberOfAdjacentMines++;
-    }
-    if (hasMineToNorthWest(mineFieldMatrix, row, column)) {
-      numberOfAdjacentMines++;
+
+    for (int r = row - 1; r <= row + 1; r++) {
+      for (int c = column - 1; c <= column + 1; c ++) {
+        if (cellContainsMine(mineFieldMatrix, r, c)) {
+          numberOfAdjacentMines++;
+        }
+      }
     }
 
     assert numberOfAdjacentMines < 9;
     return String.valueOf(numberOfAdjacentMines).charAt(0);
-  }
-
-  private boolean hasMineToNorthWest(char[][] mineFieldMatrix, int row, int column) {
-    return cellContainsMine(mineFieldMatrix, row - 1, column - 1);
-  }
-
-  private boolean hasMineToNorthEast(char[][] mineFieldMatrix, int row, int column) {
-    return cellContainsMine(mineFieldMatrix, row - 1, column + 1);
-  }
-
-  private boolean hasMineToSouthWest(char[][] mineFieldMatrix, int row, int column) {
-    return cellContainsMine(mineFieldMatrix, row + 1, column - 1);
-  }
-
-  private boolean hasMineToSouthEast(char[][] mineFieldMatrix, int row, int column) {
-    return cellContainsMine(mineFieldMatrix, row + 1, column + 1);
-  }
-
-  private boolean hasMineToSouth(char[][] mineFieldMatrix, int row, int column) {
-    return cellContainsMine(mineFieldMatrix, row + 1, column);
-  }
-
-  private boolean hasMineToNorth(char[][] mineFieldMatrix, int row, int column) {
-    return cellContainsMine(mineFieldMatrix, row - 1, column);
-  }
-
-  private boolean hasMineToEast(char[][] mineFieldMatrix, int row, int column) {
-    return cellContainsMine(mineFieldMatrix, row, column + 1);
-  }
-
-  private boolean hasMineToWest(char[][] mineFieldMatrix, int row, int column) {
-    return cellContainsMine(mineFieldMatrix, row, column - 1);
   }
 
   private boolean cellContainsMine(char[][] mineFieldMatrix, int row, int column) {
