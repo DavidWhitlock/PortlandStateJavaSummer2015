@@ -1,5 +1,6 @@
 package edu.pdx.cs410J.minesweeper;
 
+import static edu.pdx.cs410J.minesweeper.GameState.GameResult.IN_PROGRESS;
 import static edu.pdx.cs410J.minesweeper.GameState.GameResult.LOST;
 import static edu.pdx.cs410J.minesweeper.GameState.GameResult.WON;
 
@@ -38,11 +39,29 @@ public class MinesweeperGame {
     if (cell == '*') {
       this.gameState.setGameResult(LOST);
 
-    } else {
+
+    } else if (onlyMinesRemainUnprobed()) {
       this.gameState.setGameResult(WON);
+
+    } else {
+      this.gameState.setGameResult(IN_PROGRESS);
     }
 
     return this.gameState;
+  }
+
+  private boolean onlyMinesRemainUnprobed() {
+    for (int row = 0; row < gameState.getNumberOfRows(); row++) {
+      for (int column = 0; column < gameState.getNumberOfColumns(); column++) {
+        char gameCell = gameState.getCharAt(row, column);
+        char hintCell = mineFieldWithHints.getCharAt(row, column);
+        if (gameCell == '?' && hintCell != '*') {
+          return false;
+        }
+      }
+    }
+
+    return true;
   }
 
   interface MineGameGenerator {
