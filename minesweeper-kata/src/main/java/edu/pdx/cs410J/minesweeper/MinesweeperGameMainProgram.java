@@ -93,6 +93,8 @@ public class MinesweeperGameMainProgram {
       state = this.game.probe(rowAndColumn.getRow(), rowAndColumn.getColumn());
     }
 
+    printGameState(state);
+
     GameState.GameResult result = this.game.getGameResult();
     if (result == GameState.GameResult.WON) {
       System.out.println("Congratulations!  You won the game!");
@@ -108,6 +110,8 @@ public class MinesweeperGameMainProgram {
 
   private void printGameState(GameState state) {
     PrintStream out = System.out;
+
+    out.println();
 
     out.print("  ");
     IntStream.range(0, state.getNumberOfColumns()).forEach(out::print);
