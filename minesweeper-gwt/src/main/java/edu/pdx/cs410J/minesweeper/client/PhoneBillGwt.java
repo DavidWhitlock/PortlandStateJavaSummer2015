@@ -41,8 +41,6 @@ public class PhoneBillGwt implements EntryPoint {
     startScreen.addValidGameDimensionsListener(new StartScreen.ValidGameDimensionsListener() {
       @Override
       public void validGameDimensions(int rows, int columns) {
-        Window.alert("Creating a new " + rows + " x " + columns + " game");
-
         service.createMinesweeperGame(rows, columns, new AsyncCallback<GameState>() {
           @Override
           public void onFailure(Throwable throwable) {
