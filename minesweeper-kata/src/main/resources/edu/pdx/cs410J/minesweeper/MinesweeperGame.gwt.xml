@@ -1,0 +1,5 @@
+<module>
+  <source>
+    <include name="Game*.*"/>
+  </source>
+</module>
