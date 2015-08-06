@@ -1,8 +1,6 @@
 package edu.pdx.cs410J.minesweeper.client;
 
 import com.google.gwt.core.client.EntryPoint;
-import com.google.gwt.event.dom.client.ClickEvent;
-import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.user.client.ui.*;
 
 /**
@@ -30,37 +28,19 @@ public class PhoneBillGwt implements EntryPoint {
   private IsWidget createGameScreen() {
     DockPanel gameScreen = new DockPanel();
     gameScreen.add(new Label("Click on a cell to probe it"), DockPanel.NORTH);
+    gameScreen.add(new Label("Game Status information goes here"), DockPanel.SOUTH);
     return gameScreen;
   }
 
-  private VerticalPanel createStartScreen() {
-    VerticalPanel startScreen = new VerticalPanel();
-    startScreen.add(new Label("Enter game board size"));
-
-    startScreen.add(createRowsPanel());
-    startScreen.add(createColumnsPanel());
-    Button createGame = new Button("Create Game");
-    createGame.addClickHandler(new ClickHandler() {
+  private StartScreen createStartScreen() {
+    StartScreen startScreen = new StartScreen();
+    startScreen.addValidGameDimensionsListener(new StartScreen.ValidGameDimensionsListener() {
       @Override
-      public void onClick(ClickEvent clickEvent) {
+      public void validGameDimensions() {
         gamePanels.showWidget(GAME_SCREEN);
       }
     });
-    startScreen.add(createGame);
     return startScreen;
   }
 
-  private HorizontalPanel createRowsPanel() {
-    HorizontalPanel rowsPanel = new HorizontalPanel();
-    rowsPanel.add(new Label("Rows"));
-    rowsPanel.add(new TextBox());
-    return rowsPanel;
-  }
-
-  private HorizontalPanel createColumnsPanel() {
-    HorizontalPanel rowsPanel = new HorizontalPanel();
-    rowsPanel.add(new Label("Columns"));
-    rowsPanel.add(new TextBox());
-    return rowsPanel;
-  }
 }
