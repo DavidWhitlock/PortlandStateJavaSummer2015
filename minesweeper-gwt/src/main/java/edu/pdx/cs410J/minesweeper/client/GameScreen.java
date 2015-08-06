@@ -76,6 +76,8 @@ public class GameScreen extends Composite {
         });
       }
     });
+    cell.setHeight("10px");
+    cell.setWidth("10px");
     return cell;
   }
 }
