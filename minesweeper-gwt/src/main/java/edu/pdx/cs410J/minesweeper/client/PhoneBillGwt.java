@@ -1,49 +1,36 @@
 package edu.pdx.cs410J.minesweeper.client;
 
 import com.google.gwt.core.client.EntryPoint;
-import com.google.gwt.core.client.GWT;
-import com.google.gwt.event.dom.client.ClickEvent;
-import com.google.gwt.event.dom.client.ClickHandler;
-import com.google.gwt.user.client.Window;
-import com.google.gwt.user.client.rpc.AsyncCallback;
-import com.google.gwt.user.client.ui.Button;
-import com.google.gwt.user.client.ui.RootPanel;
-import edu.pdx.cs410J.AbstractPhoneCall;
-import edu.pdx.cs410J.AbstractPhoneBill;
-
-import java.util.Collection;
+import com.google.gwt.user.client.ui.*;
 
 /**
  * A basic GWT class that makes sure that we can send an Phone Bill back from the server
  */
 public class PhoneBillGwt implements EntryPoint {
   public void onModuleLoad() {
-    Button button = new Button("Ping Server");
-    button.addClickHandler(new ClickHandler() {
-        public void onClick( ClickEvent clickEvent )
-        {
-            PingServiceAsync async = GWT.create( PingService.class );
-            async.ping( new AsyncCallback<AbstractPhoneBill>() {
 
-                public void onFailure( Throwable ex )
-                {
-                    Window.alert(ex.toString());
-                }
+    VerticalPanel startScreen = new VerticalPanel();
+    startScreen.add(new Label("Enter game board size"));
 
-                public void onSuccess( AbstractPhoneBill phonebill )
-                {
-                    StringBuilder sb = new StringBuilder( phonebill.toString() );
-                    Collection<AbstractPhoneCall> calls = phonebill.getPhoneCalls();
-                    for ( AbstractPhoneCall call : calls ) {
-                        sb.append(call);
-                        sb.append("\n");
-                    }
-                    Window.alert( sb.toString() );
-                }
-            });
-        }
-    });
-      RootPanel rootPanel = RootPanel.get();
-      rootPanel.add(button);
+    startScreen.add(createRowsPanel());
+    startScreen.add(createColumnsPanel());
+    startScreen.add(new Button("Create Game"));
+
+    RootPanel rootPanel = RootPanel.get();
+    rootPanel.add(startScreen);
+  }
+
+  private HorizontalPanel createRowsPanel() {
+    HorizontalPanel rowsPanel = new HorizontalPanel();
+    rowsPanel.add(new Label("Rows"));
+    rowsPanel.add(new TextBox());
+    return rowsPanel;
+  }
+
+  private HorizontalPanel createColumnsPanel() {
+    HorizontalPanel rowsPanel = new HorizontalPanel();
+    rowsPanel.add(new Label("Columns"));
+    rowsPanel.add(new TextBox());
+    return rowsPanel;
   }
 }
