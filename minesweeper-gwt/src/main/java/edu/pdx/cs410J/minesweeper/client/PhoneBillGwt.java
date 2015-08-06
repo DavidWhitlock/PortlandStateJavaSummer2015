@@ -15,8 +15,6 @@ public class PhoneBillGwt implements EntryPoint {
 
   @Override
   public void onModuleLoad() {
-
-
     gamePanels = new DeckPanel();
     gamePanels.add(createStartScreen());
     gamePanels.add(createGameScreen());
@@ -26,11 +24,8 @@ public class PhoneBillGwt implements EntryPoint {
     gamePanels.showWidget(START_SCREEN);
   }
 
-  private IsWidget createGameScreen() {
-    DockPanel gameScreen = new DockPanel();
-    gameScreen.add(new Label("Click on a cell to probe it"), DockPanel.NORTH);
-    gameScreen.add(new Label("Game Status information goes here"), DockPanel.SOUTH);
-    return gameScreen;
+  private GameScreen createGameScreen() {
+    return new GameScreen();
   }
 
   private StartScreen createStartScreen() {
