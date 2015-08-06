@@ -32,7 +32,7 @@ public class PhoneBillGwt implements EntryPoint {
   }
 
   private GameScreen createGameScreen() {
-    gameScreen = new GameScreen();
+    gameScreen = new GameScreen(service);
     return gameScreen;
   }
 

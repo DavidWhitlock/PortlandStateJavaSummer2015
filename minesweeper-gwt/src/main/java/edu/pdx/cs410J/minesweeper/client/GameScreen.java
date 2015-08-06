@@ -1,5 +1,9 @@
 package edu.pdx.cs410J.minesweeper.client;
 
+import com.google.gwt.event.dom.client.ClickEvent;
+import com.google.gwt.event.dom.client.ClickHandler;
+import com.google.gwt.user.client.Window;
+import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.DockPanel;
 import com.google.gwt.user.client.ui.Grid;
@@ -9,8 +13,10 @@ public class GameScreen extends Composite {
 
   private final Label message;
   private final Grid grid;
+  private final MinesweeperGameServiceAsync service;
 
-  public GameScreen() {
+  public GameScreen(MinesweeperGameServiceAsync service) {
+    this.service = service;
     DockPanel gameScreen = new DockPanel();
     gameScreen.add(new Label("Click on a cell to probe it"), DockPanel.NORTH);
     message = new Label();
@@ -38,9 +44,31 @@ public class GameScreen extends Composite {
 
     for (int row = 0; row < numberOfRows; row++) {
       for (int column = 0; column < numberOfColumns; column++) {
-        grid.setWidget(row, column, new Label());
+        grid.setWidget(row, column, createCell(row, column));
       }
     }
 
+  }
+
+  private Label createCell(final int row, final int column) {
+    Label cell = new Label();
+    cell.addClickHandler(new ClickHandler() {
+      @Override
+      public void onClick(ClickEvent clickEvent) {
+        service.probe(row, column, new AsyncCallback<GameState>() {
+
+          @Override
+          public void onFailure(Throwable throwable) {
+            Window.alert(throwable.getMessage());
+          }
+
+          @Override
+          public void onSuccess(GameState gameState) {
+            displayGameState(gameState);
+          }
+        });
+      }
+    });
+    return cell;
   }
 }

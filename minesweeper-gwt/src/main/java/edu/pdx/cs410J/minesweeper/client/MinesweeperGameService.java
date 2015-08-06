@@ -11,4 +11,5 @@ public interface MinesweeperGameService extends RemoteService {
 
   GameState createMinesweeperGame(int rows, int columns);
 
+  GameState probe(int row, int column);
 }

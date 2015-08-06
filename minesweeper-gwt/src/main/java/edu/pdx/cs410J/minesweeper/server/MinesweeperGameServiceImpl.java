@@ -11,10 +11,18 @@ import edu.pdx.cs410J.minesweeper.client.MinesweeperGameService;
  */
 public class MinesweeperGameServiceImpl extends RemoteServiceServlet implements MinesweeperGameService
 {
+
+  private MinesweeperGame game;
+
   @Override
   public GameState createMinesweeperGame(int rows, int columns) {
-    MinesweeperGame game = new MinesweeperGame(rows, columns, new RandomMinesweeperGameGenerator());
+    game = new MinesweeperGame(rows, columns, new RandomMinesweeperGameGenerator());
     return game.probe(-1, -1);
+  }
+
+  @Override
+  public GameState probe(int row, int column) {
+    return game.probe(row, column);
   }
 
   /**
