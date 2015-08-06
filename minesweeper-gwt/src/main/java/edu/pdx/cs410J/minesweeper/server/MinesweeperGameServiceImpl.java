@@ -1,7 +1,7 @@
 package edu.pdx.cs410J.minesweeper.server;
 
 import com.google.gwt.user.server.rpc.RemoteServiceServlet;
-import edu.pdx.cs410J.minesweeper.GameState;
+import edu.pdx.cs410J.minesweeper.client.GameState;
 import edu.pdx.cs410J.minesweeper.MinesweeperGame;
 import edu.pdx.cs410J.minesweeper.RandomMinesweeperGameGenerator;
 import edu.pdx.cs410J.minesweeper.client.MinesweeperGameService;

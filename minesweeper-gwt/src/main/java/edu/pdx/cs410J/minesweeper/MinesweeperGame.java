@@ -1,8 +1,9 @@
 package edu.pdx.cs410J.minesweeper;
 
-import static edu.pdx.cs410J.minesweeper.GameState.GameResult.IN_PROGRESS;
-import static edu.pdx.cs410J.minesweeper.GameState.GameResult.LOST;
-import static edu.pdx.cs410J.minesweeper.GameState.GameResult.WON;
+import edu.pdx.cs410J.minesweeper.client.GameState;
+
+import static edu.pdx.cs410J.minesweeper.client.GameState.GameResult.*;
+
 
 public class MinesweeperGame {
 

@@ -1,7 +1,5 @@
 package edu.pdx.cs410J.minesweeper;
 
-import com.google.common.annotations.VisibleForTesting;
-
 import java.util.List;
 
 public class MineFieldWithHints {
@@ -51,7 +49,6 @@ public class MineFieldWithHints {
     }
   }
 
-  @VisibleForTesting
   static char[][] convertToCharMatrix(List<String> rows) {
     char[][] matrix = new char[rows.size()][rows.get(0).length()];
 

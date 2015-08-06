@@ -3,7 +3,6 @@ package edu.pdx.cs410J.minesweeper.client;
 import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.DockPanel;
 import com.google.gwt.user.client.ui.Label;
-import edu.pdx.cs410J.minesweeper.GameState;
 
 public class GameScreen extends Composite {
 

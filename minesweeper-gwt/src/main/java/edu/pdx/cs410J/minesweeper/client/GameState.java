@@ -1,12 +1,18 @@
-package edu.pdx.cs410J.minesweeper;
+package edu.pdx.cs410J.minesweeper.client;
 
-import static edu.pdx.cs410J.minesweeper.GameState.GameResult.*;
+import java.io.Serializable;
 
-public class GameState {
-  private final int numberOfRows;
-  private final int numberOfColumns;
-  private final char[][] grid;
+import static edu.pdx.cs410J.minesweeper.client.GameState.GameResult.IN_PROGRESS;
+
+public class GameState implements Serializable {
+  private int numberOfRows;
+  private int numberOfColumns;
+  private char[][] grid;
   private GameResult gameResult;
+
+  public GameState() {
+
+  }
 
   public GameState(int numberOfRows, int numberOfColumns) {
     this.numberOfRows = numberOfRows;
@@ -42,7 +48,7 @@ public class GameState {
     return numberOfColumns;
   }
 
-  void setCharAt(int row, int column, char cell) {
+  public void setCharAt(int row, int column, char cell) {
     this.grid[row][column] = cell;
   }
 
@@ -50,7 +56,7 @@ public class GameState {
     this.gameResult = gameResult;
   }
 
-  enum GameResult {
+  public enum GameResult {
     LOST, IN_PROGRESS, WON
 
   }
