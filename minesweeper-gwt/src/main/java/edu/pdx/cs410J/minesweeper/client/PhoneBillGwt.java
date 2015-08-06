@@ -51,6 +51,7 @@ public class PhoneBillGwt implements EntryPoint {
 
           @Override
           public void onSuccess(GameState gameState) {
+            gameScreen.setGridSize(gameState.getNumberOfRows(), gameState.getNumberOfColumns());
             gameScreen.displayGameState(gameState);
             gamePanels.showWidget(GAME_SCREEN);
           }
