@@ -37,6 +37,13 @@ public class GameScreen extends Composite {
         label.setText(String.valueOf(gameState.getCharAt(row, column)));
       }
     }
+
+    if (gameState.getGameResult() == GameState.GameResult.LOST) {
+      this.message.setText("You lost the game.");
+
+    } else if (gameState.getGameResult() == GameState.GameResult.WON) {
+      this.message.setText("You won the game!!");
+    }
   }
 
   public void setGridSize(int numberOfRows, int numberOfColumns) {
