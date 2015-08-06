@@ -23,18 +23,18 @@ public class StartScreen extends Composite {
     createGame.addClickHandler(new ClickHandler() {
       @Override
       public void onClick(ClickEvent clickEvent) {
-        int rows = 0;
+        int rows;
         try {
           rows = getNumberOfRows();
         } catch (ParseException e) {
-          Window.alert("Invalid number of rows");
+          Window.alert("Invalid number of rows: " + e.getMessage());
           return;
         }
-        int columns = 0;
+        int columns;
         try {
           columns = getNumberOfColumns();
         } catch (ParseException e) {
-          Window.alert("Invalid number of columns");
+          Window.alert("Invalid number of columns: " + e.getMessage());
           return;
         }
         listener.validGameDimensions(rows, columns);
@@ -48,7 +48,7 @@ public class StartScreen extends Composite {
   private int getNumberOfColumns() throws ParseException {
     Integer valueOrThrow = this.columnsField.getValueOrThrow();
     if (valueOrThrow == null) {
-      throw new ParseException("Null??", 0);
+      throw new ParseException("No value specified", 0);
     }
     return valueOrThrow;
   }
@@ -56,7 +56,7 @@ public class StartScreen extends Composite {
   private int getNumberOfRows() throws ParseException {
     Integer valueOrThrow = this.rowsField.getValueOrThrow();
     if (valueOrThrow == null) {
-      throw new ParseException("Null??", 0);
+      throw new ParseException("No value specified", 0);
     }
     return valueOrThrow;
   }
