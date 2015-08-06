@@ -1,23 +1,30 @@
 package edu.pdx.cs410J.minesweeper.client;
 
 import com.google.gwt.core.client.EntryPoint;
+import com.google.gwt.event.dom.client.ClickEvent;
+import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.user.client.ui.*;
 
 /**
  * A basic GWT class that makes sure that we can send an Phone Bill back from the server
  */
 public class PhoneBillGwt implements EntryPoint {
+
+  static final int GAME_SCREEN = 1;
+  static final int START_SCREEN = 0;
+  private DeckPanel gamePanels;
+
   @Override
   public void onModuleLoad() {
 
 
-    DeckPanel gamePanels = new DeckPanel();
+    gamePanels = new DeckPanel();
     gamePanels.add(createStartScreen());
     gamePanels.add(createGameScreen());
 
     RootPanel rootPanel = RootPanel.get();
     rootPanel.add(gamePanels);
-    gamePanels.showWidget(0);
+    gamePanels.showWidget(START_SCREEN);
   }
 
   private IsWidget createGameScreen() {
@@ -32,7 +39,14 @@ public class PhoneBillGwt implements EntryPoint {
 
     startScreen.add(createRowsPanel());
     startScreen.add(createColumnsPanel());
-    startScreen.add(new Button("Create Game"));
+    Button createGame = new Button("Create Game");
+    createGame.addClickHandler(new ClickHandler() {
+      @Override
+      public void onClick(ClickEvent clickEvent) {
+        gamePanels.showWidget(GAME_SCREEN);
+      }
+    });
+    startScreen.add(createGame);
     return startScreen;
   }
 
