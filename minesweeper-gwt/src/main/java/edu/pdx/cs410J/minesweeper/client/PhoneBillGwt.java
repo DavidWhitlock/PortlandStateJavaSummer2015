@@ -1,6 +1,7 @@
 package edu.pdx.cs410J.minesweeper.client;
 
 import com.google.gwt.core.client.EntryPoint;
+import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.*;
 
 /**
@@ -36,7 +37,8 @@ public class PhoneBillGwt implements EntryPoint {
     StartScreen startScreen = new StartScreen();
     startScreen.addValidGameDimensionsListener(new StartScreen.ValidGameDimensionsListener() {
       @Override
-      public void validGameDimensions() {
+      public void validGameDimensions(int rows, int columns) {
+        Window.alert("Creating a new " + rows + " x " + columns + " game");
         gamePanels.showWidget(GAME_SCREEN);
       }
     });

@@ -2,11 +2,16 @@ package edu.pdx.cs410J.minesweeper.client;
 
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
+import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.*;
+
+import java.text.ParseException;
 
 public class StartScreen extends Composite {
 
   private ValidGameDimensionsListener listener;
+  private IntegerBox rowsField;
+  private IntegerBox columnsField;
 
   public StartScreen() {
     VerticalPanel startScreen = new VerticalPanel();
@@ -18,7 +23,21 @@ public class StartScreen extends Composite {
     createGame.addClickHandler(new ClickHandler() {
       @Override
       public void onClick(ClickEvent clickEvent) {
-        listener.validGameDimensions();
+        int rows = 0;
+        try {
+          rows = getNumberOfRows();
+        } catch (ParseException e) {
+          Window.alert("Invalid number of rows");
+          return;
+        }
+        int columns = 0;
+        try {
+          columns = getNumberOfColumns();
+        } catch (ParseException e) {
+          Window.alert("Invalid number of columns");
+          return;
+        }
+        listener.validGameDimensions(rows, columns);
       }
     });
     startScreen.add(createGame);
@@ -26,17 +45,35 @@ public class StartScreen extends Composite {
     initWidget(startScreen);
   }
 
+  private int getNumberOfColumns() throws ParseException {
+    Integer valueOrThrow = this.columnsField.getValueOrThrow();
+    if (valueOrThrow == null) {
+      throw new ParseException("Null??", 0);
+    }
+    return valueOrThrow;
+  }
+
+  private int getNumberOfRows() throws ParseException {
+    Integer valueOrThrow = this.rowsField.getValueOrThrow();
+    if (valueOrThrow == null) {
+      throw new ParseException("Null??", 0);
+    }
+    return valueOrThrow;
+  }
+
   private HorizontalPanel createRowsPanel() {
     HorizontalPanel rowsPanel = new HorizontalPanel();
     rowsPanel.add(new Label("Rows"));
-    rowsPanel.add(new TextBox());
+    rowsField = new IntegerBox();
+    rowsPanel.add(rowsField);
     return rowsPanel;
   }
 
   private HorizontalPanel createColumnsPanel() {
     HorizontalPanel rowsPanel = new HorizontalPanel();
     rowsPanel.add(new Label("Columns"));
-    rowsPanel.add(new TextBox());
+    columnsField = new IntegerBox();
+    rowsPanel.add(columnsField);
     return rowsPanel;
   }
 
@@ -46,6 +83,6 @@ public class StartScreen extends Composite {
   }
 
   interface ValidGameDimensionsListener {
-    void validGameDimensions();
+    void validGameDimensions(int rows, int columns);
   }
 }
