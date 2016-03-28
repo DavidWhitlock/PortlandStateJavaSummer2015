@@ -1,0 +1,140 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="en">
+<head>
+<title>Source code</title>
+<link rel="stylesheet" type="text/css" href="../../stylesheet.css" title="Style">
+</head>
+<body>
+<div class="sourceContainer">
+<pre><span class="sourceLineNo">001</span>package beginner;<a name="line.1"></a>
+<span class="sourceLineNo">002</span><a name="line.2"></a>
+<span class="sourceLineNo">003</span>// FYI - usually bad practice to import statically, but can make code cleaner<a name="line.3"></a>
+<span class="sourceLineNo">004</span>import com.sandwich.koan.Koan;<a name="line.4"></a>
+<span class="sourceLineNo">005</span><a name="line.5"></a>
+<span class="sourceLineNo">006</span>import static com.sandwich.util.Assert.*;<a name="line.6"></a>
+<span class="sourceLineNo">007</span><a name="line.7"></a>
+<span class="sourceLineNo">008</span>public class AboutAssertions {<a name="line.8"></a>
+<span class="sourceLineNo">009</span><a name="line.9"></a>
+<span class="sourceLineNo">010</span>        @Koan <a name="line.10"></a>
+<span class="sourceLineNo">011</span>        public void assertBooleanTrue() {<a name="line.11"></a>
+<span class="sourceLineNo">012</span>                assertTrue(true); // should be true really<a name="line.12"></a>
+<span class="sourceLineNo">013</span>        }<a name="line.13"></a>
+<span class="sourceLineNo">014</span><a name="line.14"></a>
+<span class="sourceLineNo">015</span>        @Koan<a name="line.15"></a>
+<span class="sourceLineNo">016</span>        public void assertBooleanFalse() {<a name="line.16"></a>
+<span class="sourceLineNo">017</span>                assertFalse(false);<a name="line.17"></a>
+<span class="sourceLineNo">018</span>        }<a name="line.18"></a>
+<span class="sourceLineNo">019</span>        <a name="line.19"></a>
+<span class="sourceLineNo">020</span>        @Koan<a name="line.20"></a>
+<span class="sourceLineNo">021</span>        public void assertNullObject(){<a name="line.21"></a>
+<span class="sourceLineNo">022</span>                assertNull(null);<a name="line.22"></a>
+<span class="sourceLineNo">023</span>        }<a name="line.23"></a>
+<span class="sourceLineNo">024</span>        <a name="line.24"></a>
+<span class="sourceLineNo">025</span>        @Koan<a name="line.25"></a>
+<span class="sourceLineNo">026</span>        public void assertNotNullObject(){<a name="line.26"></a>
+<span class="sourceLineNo">027</span>                assertNotNull(new Object()); // anything other than null should pass here...<a name="line.27"></a>
+<span class="sourceLineNo">028</span>        }<a name="line.28"></a>
+<span class="sourceLineNo">029</span><a name="line.29"></a>
+<span class="sourceLineNo">030</span>        @Koan<a name="line.30"></a>
+<span class="sourceLineNo">031</span>        public void assertEqualsUsingExpression(){<a name="line.31"></a>
+<span class="sourceLineNo">032</span>                assertTrue("Hello World!".equals("Hello World!"));<a name="line.32"></a>
+<span class="sourceLineNo">033</span>        }<a name="line.33"></a>
+<span class="sourceLineNo">034</span><a name="line.34"></a>
+<span class="sourceLineNo">035</span>        @Koan<a name="line.35"></a>
+<span class="sourceLineNo">036</span>        public void assertEqualsWithBetterFailureMessage(){<a name="line.36"></a>
+<span class="sourceLineNo">037</span>                assertEquals("This should equal 1", 1, 1);<a name="line.37"></a>
+<span class="sourceLineNo">038</span>        }<a name="line.38"></a>
+<span class="sourceLineNo">039</span><a name="line.39"></a>
+<span class="sourceLineNo">040</span>        @Koan<a name="line.40"></a>
+<span class="sourceLineNo">041</span>        public void assertEqualsWithDescriptiveMessage() {<a name="line.41"></a>
+<span class="sourceLineNo">042</span>                // Generally, when using an assertXXX methods, expectation is on the <a name="line.42"></a>
+<span class="sourceLineNo">043</span>                // left and it is best practice to use a String for the first arg <a name="line.43"></a>
+<span class="sourceLineNo">044</span>                // indication what has failed<a name="line.44"></a>
+<span class="sourceLineNo">045</span>                assertEquals("The answer to 'life the universe and everything' should be 42", 42, 42);<a name="line.45"></a>
+<span class="sourceLineNo">046</span>        }<a name="line.46"></a>
+<span class="sourceLineNo">047</span>        <a name="line.47"></a>
+<span class="sourceLineNo">048</span>        @Koan<a name="line.48"></a>
+<span class="sourceLineNo">049</span>        public void assertSameInstance(){<a name="line.49"></a>
+<span class="sourceLineNo">050</span>                Object same                             = new Integer(1);<a name="line.50"></a>
+<span class="sourceLineNo">051</span>                Object sameReference    = same;<a name="line.51"></a>
+<span class="sourceLineNo">052</span>                assertSame(same, sameReference);<a name="line.52"></a>
+<span class="sourceLineNo">053</span>        }<a name="line.53"></a>
+<span class="sourceLineNo">054</span>        <a name="line.54"></a>
+<span class="sourceLineNo">055</span>        @Koan<a name="line.55"></a>
+<span class="sourceLineNo">056</span>        public void assertNotSameInstance(){<a name="line.56"></a>
+<span class="sourceLineNo">057</span>                Integer same           = new Integer(1);<a name="line.57"></a>
+<span class="sourceLineNo">058</span>                Integer sameReference  = new Integer(1);<a name="line.58"></a>
+<span class="sourceLineNo">059</span>                assertNotSame(same, sameReference); <a name="line.59"></a>
+<span class="sourceLineNo">060</span>        }<a name="line.60"></a>
+<span class="sourceLineNo">061</span><a name="line.61"></a>
+<span class="sourceLineNo">062</span>        @Koan<a name="line.62"></a>
+<span class="sourceLineNo">063</span>        public void assertSameStringInstance(){<a name="line.63"></a>
+<span class="sourceLineNo">064</span>                String same           = "Same";<a name="line.64"></a>
+<span class="sourceLineNo">065</span>                String sameReference  = new String("Same").intern();<a name="line.65"></a>
+<span class="sourceLineNo">066</span>                assertSame(same, sameReference);<a name="line.66"></a>
+<span class="sourceLineNo">067</span>        }<a name="line.67"></a>
+<span class="sourceLineNo">068</span>}<a name="line.68"></a>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</pre>
+</div>
+</body>
+</html>
