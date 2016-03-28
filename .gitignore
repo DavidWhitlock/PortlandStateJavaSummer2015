@@ -15,6 +15,7 @@ hs_err_pid*
 *.ipr
 *.iml
 *.iws
+*.idea
 
 .DS_Store
 */.idea/
