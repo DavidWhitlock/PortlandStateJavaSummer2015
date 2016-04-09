@@ -57,6 +57,7 @@
                 <extraJvmArgs>-Xmx512m</extraJvmArgs>
                 <style>DETAILED</style>
                 <copyWebapp>true</copyWebapp>
+              <sourceLevel>1.7</sourceLevel>
             </configuration>
           <executions>
             <execution>
@@ -72,6 +73,7 @@
         <artifactId>jetty-maven-plugin</artifactId>
         <version>9.2.10.v20150310</version>
         <configuration>
+          <scanIntervalSeconds>10</scanIntervalSeconds>
           <httpConnector port="8080"/>
           <stopKey>stop-key</stopKey>
           <stopPort>9999</stopPort>
