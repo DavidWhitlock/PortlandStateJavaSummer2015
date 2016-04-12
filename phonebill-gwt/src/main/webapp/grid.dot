@@ -3,7 +3,7 @@ digraph {
     node [rx=5 ry=5 labelStyle="font: 300 14px 'Helvetica Neue', Helvetica"]
     edge [labelStyle="font: 300 14px 'Helvetica Neue', Helvetica"]
     A [labelType="html"
-       label="A <span style='font-size:32px'>Big</span> <span style='color:red;'>HTML</span> Source!"];
+       label="A <span style='font-size:32px'><a href='http://www.google.com'>Link</a></span> <span style='color:red;'>HTML</span> Source!"];
     C;
     E [label="Bold Red Sink" style="fill: #f77; font-weight: bold"];
     A -> B -> C;
