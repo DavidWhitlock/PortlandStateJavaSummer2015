@@ -5,7 +5,7 @@ digraph {
     A [labelType="html"
        label="A <span style='font-size:32px'><a href='http://www.google.com'>Link</a></span> <span style='color:red;'>HTML</span> Source!"];
     C;
-    E [label="Bold Red Sink" style="fill: #f77; font-weight: bold"];
+    E [label="Bold Red Sink\nNew line" style="fill: #f77; font-weight: bold"];
     A -> B -> C;
     B -> D [label="A blue label" labelStyle="fill: #55f; font-weight: bold;"];
     D -> E [label="A thick red edge" style="stroke: #f77; stroke-width: 2px;" arrowheadStyle="fill: #f77"];
