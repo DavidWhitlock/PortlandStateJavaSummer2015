@@ -2,20 +2,20 @@
 
 <rss version="0.91">
   <channel>
-    <title>CS410J Phone Bill Project - Checkstyle report</title>
-    <link>http://www.cs.pdx.edu/~whitlock</link>
-    <description>CS410J Phone Bill Project - Checkstyle report</description>
+    <title>student - Checkstyle report</title>
+    <link>http://www.cs.pdx.edu</link>
+    <description>student - Checkstyle report</description>
     <language>en-us</language>
     <copyright>&#169;2000 - 2016 Portland State University</copyright>
     <item>
-      <title>File: 6,
-             Errors: 121,
+      <title>File: 1,
+             Errors: 68,
              Warnings: 0,
              Infos: 0
       </title>
-            <link>http://www.cs.pdx.edu/~whitlock/checkstyle.html</link>
+            <link>http://www.cs.pdx.edu/checkstyle.html</link>
       <description>
-        <p>Click <a href="http://www.cs.pdx.edu/~whitlock/checkstyle.html">here</a> for the full Checkstyle report.</p>
+        <p>Click <a href="http://www.cs.pdx.edu/checkstyle.html">here</a> for the full Checkstyle report.</p>
 
         <table summary="Files" boder="1">
           <thead>
@@ -29,7 +29,7 @@
           <tbody>
                           <tr>
                 <td>
-                  <a href="http://www.cs.pdx.edu/~whitlock/checkstyle.html#edu.pdx.cs410J.minesweeper.GameState.java">edu/pdx/cs410J/minesweeper/GameState.java</a>
+                  <a href="http://www.cs.pdx.edu/checkstyle.html#edu.pdx.cs410J.whitlock.Student.java">edu/pdx/cs410J/whitlock/Student.java</a>
                 </td>
                 <td>
                   0
@@ -38,77 +38,7 @@
                   0
                 </td>
                 <td>
-                  41
-                </td>
-              </tr>
-                          <tr>
-                <td>
-                  <a href="http://www.cs.pdx.edu/~whitlock/checkstyle.html#edu.pdx.cs410J.minesweeper.MinesweeperGame.java">edu/pdx/cs410J/minesweeper/MinesweeperGame.java</a>
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  32
-                </td>
-              </tr>
-                          <tr>
-                <td>
-                  <a href="http://www.cs.pdx.edu/~whitlock/checkstyle.html#edu.pdx.cs410J.minesweeper.MinesweeperGameMainProgram.java">edu/pdx/cs410J/minesweeper/MinesweeperGameMainProgram.java</a>
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  1
-                </td>
-              </tr>
-                          <tr>
-                <td>
-                  <a href="http://www.cs.pdx.edu/~whitlock/checkstyle.html#edu.pdx.cs410J.minesweeper.RandomMinesweeperGameGenerator.java">edu/pdx/cs410J/minesweeper/RandomMinesweeperGameGenerator.java</a>
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  8
-                </td>
-              </tr>
-                          <tr>
-                <td>
-                  <a href="http://www.cs.pdx.edu/~whitlock/checkstyle.html#edu.pdx.cs410J.minesweeper.MineField.java">edu/pdx/cs410J/minesweeper/MineField.java</a>
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  17
-                </td>
-              </tr>
-                          <tr>
-                <td>
-                  <a href="http://www.cs.pdx.edu/~whitlock/checkstyle.html#edu.pdx.cs410J.minesweeper.MineFieldWithHints.java">edu/pdx/cs410J/minesweeper/MineFieldWithHints.java</a>
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  22
+                  68
                 </td>
               </tr>
                       </tbody>
