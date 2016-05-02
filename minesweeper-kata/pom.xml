@@ -63,6 +63,17 @@
   <build>
     <plugins>
       <plugin>
+          <artifactId>maven-site-plugin</artifactId>
+          <version>3.3</version>
+          <dependencies>
+              <dependency>
+                  <groupId>net.trajano.wagon</groupId>
+                  <artifactId>wagon-git</artifactId>
+                  <version>2.0.0</version>
+              </dependency>
+          </dependencies>
+      </plugin>
+      <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-source-plugin</artifactId>
         <version>2.2.1</version>
@@ -182,5 +193,14 @@
       </build>
     </profile>
   </profiles>
-
+  <distributionManagement>
+    <site>
+      <id>gh-pages</id>
+      <name>David Whitlock's GitHub Pages</name>
+      <url>github:http://davidwhitlock.github.io/PortlandStateJavaSummer2015/</url>
+      <!--
+      <url>git:ssh://git@github.com/trajano/trajano.git?gh-pages#</url>
+      -->
+    </site>
+  </distributionManagement>
 </project>
