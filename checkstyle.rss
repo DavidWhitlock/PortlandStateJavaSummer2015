@@ -2,20 +2,20 @@
 
 <rss version="0.91">
   <channel>
-    <title>student - Checkstyle report</title>
-    <link>http://www.cs.pdx.edu</link>
-    <description>student - Checkstyle report</description>
+    <title>CS410J Phone Bill Project - Checkstyle report</title>
+    <link>http://www.cs.pdx.edu/~whitlock</link>
+    <description>CS410J Phone Bill Project - Checkstyle report</description>
     <language>en-us</language>
     <copyright>&#169;2000 - 2016 Portland State University</copyright>
     <item>
       <title>File: 1,
-             Errors: 68,
+             Errors: 20,
              Warnings: 0,
              Infos: 0
       </title>
-            <link>http://www.cs.pdx.edu/checkstyle.html</link>
+            <link>http://www.cs.pdx.edu/~whitlock/checkstyle.html</link>
       <description>
-        <p>Click <a href="http://www.cs.pdx.edu/checkstyle.html">here</a> for the full Checkstyle report.</p>
+        <p>Click <a href="http://www.cs.pdx.edu/~whitlock/checkstyle.html">here</a> for the full Checkstyle report.</p>
 
         <table summary="Files" boder="1">
           <thead>
@@ -29,7 +29,7 @@
           <tbody>
                           <tr>
                 <td>
-                  <a href="http://www.cs.pdx.edu/checkstyle.html#edu.pdx.cs410J.whitlock.Student.java">edu/pdx/cs410J/whitlock/Student.java</a>
+                  <a href="http://www.cs.pdx.edu/~whitlock/checkstyle.html#edu.pdx.cs410J.kata.NumbersInWords.java">edu/pdx/cs410J/kata/NumbersInWords.java</a>
                 </td>
                 <td>
                   0
@@ -38,7 +38,7 @@
                   0
                 </td>
                 <td>
-                  68
+                  20
                 </td>
               </tr>
                       </tbody>
